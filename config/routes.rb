@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  get "incidents/show"
+  get "incidents/index"
+  get "badges/index"
+  get "badges/show"
+  get "guardians/new"
+  get "guardians/edit"
+  get "guardians/update"
+  get "guardians/show"
+  get "guardians/index"
+  get "guardians/create"
+  get "guardians/delete"
+  get "runs/new"
+  get "runs/create"
+  get "runs/index"
+  get "runs/show"
+  get "runs/update"
+  get "runs/delete"
+  get "runs/edit"
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

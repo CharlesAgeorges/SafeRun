@@ -1,0 +1,2 @@
+class RunBadgesController < ApplicationController
+end

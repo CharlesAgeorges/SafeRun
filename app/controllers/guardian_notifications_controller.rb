@@ -1,0 +1,2 @@
+class GuardianNotificationsController < ApplicationController
+end

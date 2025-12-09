@@ -1,7 +1,17 @@
 <nav class = "navbar">
   <div class="container-fluid">
     <a href="#" class="navbar-brand">
-      <img src="" alt="">
+      <i class="fa-solid fa-person-running ourlight-gray"></i>
     </a>
+    <div class= "">
+    <i class="fa-solid fa-bars ourlight-gray" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+     <ul class="dropdown-menu bg-dark-gray">
+        <%= link_to "Profile", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
+        <%= link_to "Guardians", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
+        <%= link_to "Runs", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
+        <%= link_to "Badges", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
+        <%= link_to "Log out", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -1,2 +1,6 @@
 <h1>Badges#index</h1>
-<p>Find me in app/views/badges/index.html.erb</p>
+<% @badges.each do |badge| %>
+<h2>
+<%= link_to badge.name, badge_path(badge) %>
+</h2>
+<% end %>

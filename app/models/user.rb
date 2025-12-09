@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :runs, dependent: :destroy
   has_many :guardians, dependent: :destroy
   has_many :run_badges, through: :runs
+  has_many :badges, through: :run_badges
   has_many :incidents, through: :runs
 end

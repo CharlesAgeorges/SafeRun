@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%#> <h1>Welcome to RunSafe</h1>
+
+<p>Bienvenue sur l'application RunSafe!</p>
+
+<% if user_signed_in? %>
+  <%#><p>Connecté en tant que: <%= current_user.email %><%#></p>
+ <%#> <%= link_to "Mon Profil", profile_path %>
+ <%#> <%= link_to "Mes Runs", runs_path %>
+  <%#><%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete } %>
+<%#><% else %>
+  <%#><%= link_to "Se connecter", new_user_session_path %>
+ <%#> <%= link_to "S'inscrire", new_user_registration_path %>
+<%#><% end %>

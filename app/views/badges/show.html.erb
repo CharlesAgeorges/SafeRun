@@ -1,2 +1,8 @@
-<h1>Badges#show</h1>
-<p>Find me in app/views/badges/show.html.erb</p>
+<%= link_to "Retour Index", badges_path %>
+<h1>Mes Badges</h1>
+<h2>
+  <%= @badge.name %>
+</h2>
+<p>
+  <%= @badge.description %>
+</p>

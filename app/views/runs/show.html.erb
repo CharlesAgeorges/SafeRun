@@ -1,2 +1,27 @@
-<h1>Runs#show</h1>
-<p>Find me in app/views/runs/show.html.erb</p>
+<div class="run-card">
+  <p><strong>ID :</strong> <%= @run.id %></p>
+  <p><strong>Status :</strong> <%= @run.status %></p>
+  <p><strong>Distance :</strong> <%= @run.distance || "N/A" %> km</p>
+  <p><strong>Durée :</strong> <%= @run.duration || "N/A" %> min</p>
+  <p><strong>Point de départ :</strong> <%= @run.start_point || "-" %></p>
+  <p><strong>Début :</strong> <%= @run.started_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
+  <p><strong>Fin :</strong> <%= @run.ended_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
+
+    <% if @run.status == "planned" %>
+      <%= button_to "Démarrer", start_run_path(@run),method: :patch,class: "btn btn-primary" %>
+    <% end %>
+
+    <% if @run.status == "running" %>
+      <%= button_to "Mettre en pause", pause_run_path(@run),method: :patch, class: "btn btn-warning" %>
+    <% end %>
+
+    <% if @run.status == "paused" %>
+      <%= button_to "Reprendre", resume_run_path(@run), method: :patch, class: "btn btn-success" %>
+    <% end %>
+
+    <% if @run.status.in?(%w[running paused]) %>
+      <%= button_to "Terminer", end_run_path(@run),method: :patch, class: "btn btn-danger" %>
+    <% end %>
+</div>
+
+<%= link_to "Retour", runs_path %>

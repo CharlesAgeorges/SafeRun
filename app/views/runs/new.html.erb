@@ -1,2 +1,24 @@
-<h1>Runs#new</h1>
-<p>Find me in app/views/runs/new.html.erb</p>
+<h1>Nouvelle course</h1>
+
+<%= form_with model: @run do |f| %>
+  <div>
+    <%= f.label :duration, "Durée (minutes)" %>
+    <%= f.number_field :duration, min: 1 %>
+  </div>
+
+  <div>
+    <%= f.label :distance, "Distance (km)" %>
+    <%= f.number_field :distance, step: 0.1, min: 0 %>
+  </div>
+
+  <div>
+    <%= f.label :start_point, "Point de départ" %>
+    <%= f.text_field :start_point %>
+  </div>
+
+  <div>
+    <%= f.submit "Planifier la course" %>
+  </div>
+<% end %>
+
+<%= link_to "Retour", runs_path %>

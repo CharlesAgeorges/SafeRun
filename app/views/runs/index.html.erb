@@ -1,2 +1,26 @@
-<h1>Runs#index</h1>
-<p>Find me in app/views/runs/index.html.erb</p>
+<h1>Mes courses</h1>
+
+<%= link_to "Nouvelle course", new_run_path, class: "btn btn-success mb-3" %>
+
+<h2>Courses terminées</h2>
+
+<% if @runs.any? { |run| run.status == "ended" } %>
+
+  <ul>
+    <% @runs.each do |run| %>
+      <% if run.status == "ended" %>
+        <li class="mb-2">
+          <%= run.ended_at&.strftime("%d/%m/%Y %H:%M") %> |
+          <%= run.distance %> km |
+          <%= run.duration %> min |
+          <%= run.start_point %> |
+          <%= link_to "Voir", run_path(run) %>
+          <%= link_to "Supprimer", run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette course ?" },class: "text-danger" %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>Aucune course terminée.</p>
+<% end %>

@@ -1,0 +1,19 @@
+<div class = container>
+
+<%= form_with model: guardian do |f| %>
+  <div>
+    <%= f.label :name, "Nom" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :phone_number, "Numéro de téléphone" %><br>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+</div>

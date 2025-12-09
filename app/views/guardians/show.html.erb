@@ -1,2 +1,13 @@
-<h1>Guardians#show</h1>
-<p>Find me in app/views/guardians/show.html.erb</p>
+<div class = container>
+
+<h1><%= @guardian.name %></h1>
+
+<p>
+  <strong>Numéro :</strong>
+  <%= @guardian.phone_number %>
+</p>
+
+<%= link_to "Modifier", edit_guardian_path(@guardian) %> |
+<%= link_to "Retour à la liste", guardians_path %>
+
+</div>

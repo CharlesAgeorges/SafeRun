@@ -1,2 +1,5 @@
-<h1>Guardians#edit</h1>
-<p>Find me in app/views/guardians/edit.html.erb</p>
+<h1>Modifier Guardian</h1>
+
+<%= render "form", guardian: @guardian %>
+
+<%= link_to "Retour", guardians_path %>

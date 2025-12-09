@@ -1,10 +1,12 @@
-<%= link_to "Retour Index", badges_path %>
-<h1>Mes Badges</h1>
-<h2>
-  <%= @badge.name %>
-</h2>
-<p>
-  <%= @badge.description %>
-</p>
+<div class = container >
+  <div><%= link_to "Retour Index", badges_path %></div>
+  <div><h1>Mes Badges</h1></div>
+  <div><h2>
+    <%= @badge.name %>
+  </h2></div>
+  <div><p>
+    <%= @badge.description %>
+  </p></div>
 
-<%= link_to "Retour", badges_path %>
+  <div><%= link_to "Retour", badges_path %></div>
+</div>

@@ -1,2 +1,3 @@
-<h1>Incidents#show</h1>
-<p>Find me in app/views/incidents/show.html.erb</p>
+<h1>Incident #<%= @incident.id %></h1>
+<p>Type: <%= @incident.incident_type %></p>
+<%= link_to "Retour", incidents_path %>

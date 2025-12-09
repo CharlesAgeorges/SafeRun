@@ -1,24 +1,18 @@
 Rails.application.routes.draw do
-  get "incidents/show"
-  get "incidents/index"
-  get "badges/index"
-  get "badges/show"
-  get "guardians/new"
-  get "guardians/edit"
-  get "guardians/update"
-  get "guardians/show"
-  get "guardians/index"
-  get "guardians/create"
-  get "guardians/delete"
-  get "runs/new"
-  get "runs/create"
-  get "runs/index"
-  get "runs/show"
-  get "runs/update"
-  get "runs/delete"
-  get "runs/edit"
+
   devise_for :users
   root to: "pages#home"
+
+  resources :guardians
+  resources :runs do
+    resources :positions, only: :create
+    resources :run_badges, only: :create
+    resources :guardian_notifications, only: :create
+  end
+  resources :badges, only: [:index, :show]
+
+  get "/profile", to: "pages#profile", as: :profile
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -30,5 +24,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+
 end

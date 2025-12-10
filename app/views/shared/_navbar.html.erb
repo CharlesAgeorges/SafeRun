@@ -1,21 +1,29 @@
-<nav class = "navbar">
+<nav class="navbar">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-person-running ourlight-gray"></i>
+      <i class="fa-solid fa-house ourlight-gray"></i>
     <% end %>
-    <div class= "">
-        <% if user_signed_in? %>
-          <i class="fa-solid fa-bars ourlight-gray" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-          <ul class="dropdown-menu bg-dark-gray">
-            <%= link_to "Profile", root_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Guardians", guardians_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Runs", runs_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Badges", badges_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item ourlight-gray bg-dark-gray" %>
-        <% else %>
-            <%= link_to "Login", new_user_session_path, class: "nav-link ourlight-gray" %>
+    <% if user_signed_in? %>
+        <%= link_to profile_path, class: "ourlight-gray" do%>
+          <i class="fa-solid fa-user ourlight-gray"></i>
         <% end %>
-      </ul>
+        <%= link_to runs_path, class: "ourlight-gray" do%>
+          <i class="fa-solid fa-person-running ourlight-gray"></i>
+        <% end %>
+        <%= link_to badges_path, class: "ourlight-gray" do%>
+          <i class="fa-solid fa-medal ourlight-gray"></i>
+        <% end %>
+        <%= link_to guardians_path, class: "ourlight-gray" do%>
+          <i class="fa-solid fa-user-shield ourlight-gray"></i>
+        <% end %>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "ourlight-gray" do%>
+          <i class="fa-solid fa-arrow-right-from-bracket ourlight-gray"></i>
+        <% end %>
+    <% else %>
+        <%= link_to new_user_session_path, class: "nav-link ourlight-gray" do%>
+        Log in
+          <i class="fa-solid fa-arrow-right-to-bracket ourlight-gray"></i>
+        <% end %>
+    <% end %>
     </div>
-  </div>
 </nav>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         patch "pause", to: "runs#pause_run", as: :pause
         patch "resume", to: "runs#resume_run", as: :resume
         patch "end", to: "runs#end_run", as: :end
+        post :start_alert, to: 'guardian_notifications#run_start_alert'
       end
       resources :positions, only: :create
       resources :run_badges, only: :create

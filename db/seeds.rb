@@ -7,3 +7,35 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "Erasing previous data"
+
+Run.destroy_all
+Guardian.destroy_all
+Badge.destroy_all
+
+
+puts "..."
+
+puts "Creating Runs"
+
+puts "..."
+
+puts "Runs created"
+
+puts "..."
+
+puts "Creating Guardians"
+
+puts "..."
+
+puts "Guardians added"
+
+puts "..."
+
+puts "Creating Badges"
+
+puts "..."
+
+puts "Amazing Badges Created"
+
+puts "Seeds up and running, SafeRunning!"

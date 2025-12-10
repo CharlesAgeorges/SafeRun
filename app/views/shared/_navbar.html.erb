@@ -7,11 +7,11 @@
         <% if user_signed_in? %>
           <i class="fa-solid fa-bars ourlight-gray" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
           <ul class="dropdown-menu bg-dark-gray">
-            <%= link_to "Profile", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Guardians", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Runs", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Badges", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
-            <%= link_to "Log out", "#", class: "dropdown-item ourlight-gray bg-dark-gray" %>
+            <%= link_to "Profile", root_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
+            <%= link_to "Guardians", guardians_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
+            <%= link_to "Runs", runs_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
+            <%= link_to "Badges", badges_path, class: "dropdown-item ourlight-gray bg-dark-gray" %>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item ourlight-gray bg-dark-gray" %>
         <% else %>
             <%= link_to "Login", new_user_session_path, class: "nav-link ourlight-gray" %>
         <% end %>

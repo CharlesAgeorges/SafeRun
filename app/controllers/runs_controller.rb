@@ -67,7 +67,10 @@ class RunsController < ApplicationController
 
   def pause_run
     if @run.status == "running"
-      @run.update(status: "paused")
+      @run.update(
+        status: "paused",
+        paused_at: Time.current
+      )
       redirect_to @run, notice: "Course mise en pause"
     else
       redirect_to @run, alert: "Impossible de mettre en pause cette course."
@@ -76,7 +79,12 @@ class RunsController < ApplicationController
 
   def resume_run
     if @run.status == "paused"
-      @run.update(status: "running")
+      pause_duration = (Time.current - @run.paused_at).to_i
+      @run.update(
+        status: "running",
+        paused_duration: @run.paused_duration + pause_duration,
+        paused_at: nil
+      )
       redirect_to @run, notice: "Course reprise"
     else
       redirect_to @run, alert: "Cette course ne peut pas être reprise"

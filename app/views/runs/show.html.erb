@@ -10,7 +10,7 @@
 
   <% if @run.status.in?(%w[running paused]) %>
     <p><strong>Temps écoulé :</strong></p>
-    <div data-controller="timer" data-timer-started-at-value="<%= @run.started_at.iso8601 %>" style="font-size: 2rem; font-weight: bold;">
+    <div data-controller="timer" data-timer-started-at-value="<%= @run.started_at.iso8601 %>" data-timer-paused-duration-value="<%= @run.paused_duration %>"data-timer-paused-value="<%= @run.status == 'paused' %>"style="font-size: 2rem; font-weight: bold;">
       00:00:00
     </div>
   <% end %>

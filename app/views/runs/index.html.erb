@@ -1,4 +1,14 @@
+<%= render "shared/navbar" %>
+
 <div class = container>
+  <nav>
+    <%= link_to "Accueil", root_path %> |
+    <%= link_to "Profil", profile_path %> |
+    <%= link_to "Runs", runs_path %> |
+    <%= link_to "Guardians", guardians_path %> |
+    <%= link_to "Badges", badges_path %>
+  </nav>
+
 <div><h1>Mes courses</h1></div>
 
 <div>

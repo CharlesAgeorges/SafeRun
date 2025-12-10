@@ -5,10 +5,16 @@ Rails.application.routes.draw do
 
   resources :guardians
   resources :runs do
-    resources :positions, only: :create
-    resources :run_badges, only: :create
-    resources :guardian_notifications, only: :create
-  end
+      member do
+        patch "start", to: "runs#start_run", as: :start
+        patch "pause", to: "runs#pause_run", as: :pause
+        patch "resume", to: "runs#resume_run", as: :resume
+        patch "end", to: "runs#end_run", as: :end
+      end
+      resources :positions, only: :create
+      resources :run_badges, only: :create
+      resources :guardian_notifications, only: :create
+    end
   resources :badges, only: [:index, :show]
 
   get "/profile", to: "pages#profile", as: :profile

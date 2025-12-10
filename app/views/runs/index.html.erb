@@ -1,12 +1,17 @@
-<h1>Mes courses</h1>
+<div class = container>
+<div><h1>Mes courses</h1></div>
 
+<div>
 <%= link_to "Nouvelle course", new_run_path, class: "btn btn-success mb-3" %>
+<%= link_to "Retour à l'accueil", root_path %>
+<%= link_to "Mon profil", profile_path %>
+</div>
 
-<h2>Courses terminées</h2>
+<div><h2>Courses terminées</h2></div>
 
-<% if @runs.any? { |run| run.status == "ended" } %>
+<div><% if @runs.any? { |run| run.status == "ended" } %>
 
-  <ul>
+  <div><ul>
     <% @runs.each do |run| %>
       <% if run.status == "ended" %>
         <li class="mb-2">
@@ -19,8 +24,10 @@
         </li>
       <% end %>
     <% end %>
-  </ul>
+  </ul></div>
 
-<% else %>
-  <p>Aucune course terminée.</p>
-<% end %>
+  <% else %>
+    <p>Aucune course terminée.</p>
+  <% end %>
+  </div>
+</div>

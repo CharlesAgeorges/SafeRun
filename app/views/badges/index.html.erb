@@ -1,19 +1,17 @@
 <%= render "shared/navbar" %>
-
 <div class="container">
-  <nav>
+  <div><h1>Liste des Badges</h1></div>
+  <div>
+    <% @badges.each do |badge| %>
+      <h2>
+        <%= link_to badge.name, badge_path(badge) %>
+      </h2>
+    <% end %>
+  </div>
+  <div>
     <%= link_to "Accueil", root_path %> |
     <%= link_to "Profil", profile_path %> |
     <%= link_to "Runs", runs_path %> |
-    <%= link_to "Guardians", guardians_path %> |
-    <%= link_to "Badges", badges_path %>
-  </nav>
-
-  <h1>Liste des Badges</h1>
-
-  <% @badges.each do |badge| %>
-    <h2>
-      <%= link_to badge.name, badge_path(badge) %>
-    </h2>
-  <% end %>
+    <%= link_to "Guardians", guardians_path %>
+  </div>
 </div>

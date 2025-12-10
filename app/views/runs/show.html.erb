@@ -2,11 +2,16 @@
 <div class="run-card">
   <p><strong>ID :</strong> <%= @run.id %></p>
   <p><strong>Status :</strong> <%= @run.status %></p>
+  <p><strong>Guardians :</strong>
+    <%= @run.guardians.map(&:name).join(", ").presence || "-" %>
+  </p>
+
   <p><strong>Distance :</strong> <%= @run.distance || "N/A" %> km</p>
   <p><strong>Durée :</strong> <%= @run.duration || "N/A" %> min</p>
   <p><strong>Point de départ :</strong> <%= @run.start_point || "-" %></p>
   <p><strong>Début :</strong> <%= @run.started_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
   <p><strong>Fin :</strong> <%= @run.ended_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
+
 
   <% if @run.status.in?(%w[running paused]) %>
     <p><strong>Temps écoulé :</strong></p>

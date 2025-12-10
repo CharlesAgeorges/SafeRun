@@ -1,8 +1,10 @@
 class RunsController < ApplicationController
-  before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update]
   before_action :authenticate_user!
+  before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit]
+
   def new
     @run = Run.new
+    @guardians = current_user.guardians
   end
 
   def index
@@ -10,14 +12,14 @@ class RunsController < ApplicationController
   end
 
   def create
-    @run = Run.new(run_params)
-    @run.user = current_user
+    @run = current_user.runs.build(run_params)
     @run.status = "planned"
     @run.started_at = nil
 
     if @run.save
-      redirect_to @run, notice: "Course planifiée", status: :see_other
+      redirect_to @run, notice: 'Run créé avec succès!'
     else
+      @guardians = current_user.guardians
       render :new, status: :unprocessable_entity
     end
   end
@@ -25,10 +27,15 @@ class RunsController < ApplicationController
   def show
   end
 
+  def edit
+    @guardians = current_user.guardians
+  end
+
   def update
     if @run.update(run_params)
       redirect_to @run, notice: "Run modifiée"
     else
+      @guardians = current_user.guardians
       render :edit, status: :unprocessable_entity
     end
   end
@@ -36,9 +43,6 @@ class RunsController < ApplicationController
   def destroy
     @run.destroy
     redirect_to runs_path, notice: "Run supprimée"
-  end
-
-  def edit
   end
 
   def start_run
@@ -90,6 +94,6 @@ class RunsController < ApplicationController
   end
 
   def run_params
-    params.require(:run).permit(:duration, :distance, :start_point, :start_point_lat, :start_point_lng)
+    params.require(:run).permit(:duration, :distance, :start_point, :start_point_lat, :start_point_lng, guardian_ids: [])
   end
 end

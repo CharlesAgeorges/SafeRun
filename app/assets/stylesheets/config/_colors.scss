@@ -8,3 +8,15 @@ $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
+$ourlight-gray:#E2DFD6;
+$middle-gray: #415E66;
+$dark-gray: #434E53;
+$info-gray: #334D54;
+
+.ourlight-gray {
+  color:$ourlight-gray !important;
+}
+
+.bg-dark-gray {
+  background-color:$dark-gray !important;
+}

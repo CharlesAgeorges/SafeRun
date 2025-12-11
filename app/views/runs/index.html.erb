@@ -1,20 +1,11 @@
 <%= render "shared/navbar" %>
 
 <div class = container>
-  <nav>
-    <%= link_to "Accueil", root_path %> |
-    <%= link_to "Profil", profile_path %> |
-    <%= link_to "Runs", runs_path %> |
-    <%= link_to "Guardians", guardians_path %> |
-    <%= link_to "Badges", badges_path %>
-  </nav>
 
 <div><h1>Mes courses</h1></div>
 
 <div>
 <%= link_to "Nouvelle course", new_run_path, class: "btn btn-success mb-3" %>
-<%= link_to "Retour à l'accueil", root_path %>
-<%= link_to "Mon profil", profile_path %>
 </div>
 
 <div><h2>Courses terminées</h2></div>

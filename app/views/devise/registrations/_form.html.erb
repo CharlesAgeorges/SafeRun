@@ -1,6 +1,16 @@
-<div class="user-profile_card">
+<<div class="container">
+<div class="user-profile_card mw-auto" style="max-width: 500px;">
+
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
+
+    <div class="user-profile_group">
+      <%= f.label :name, "Votre nom", class: "user-profile_label" %>
+      <%= f.text_field :name,
+            class: "user-profile_input",
+            autofocus: true,
+            autocomplete: "name" %>
+    </div>
 
     <div class="user-profile_group">
       <%= f.label :email, "Email", class: "user-profile_label" %>
@@ -27,10 +37,12 @@
             autocomplete: "new-password" %>
     </div>
 
-    <div class="user-profile_actions">
+    <div class="user-profile_actions d-flex justify-content-center mt-4">
       <%= f.submit "S'inscrire", class: "btn btn-success btn-lg return-training-btn" %>
     </div>
   <% end %>
-
+<div class="text-center mt-3">
   <%= render "devise/shared/links" %>
+  </div>
+</div>
 </div>

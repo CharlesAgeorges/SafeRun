@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 
+<div class="form_container">
 <div><h1>Nouvelle course</h1></div>
-<div class="container">
 
   <div>
     <%= form_with model: @run do |f| %>
@@ -41,5 +41,4 @@
   <div>
     <%= link_to "Retour", runs_path %>
   </div>
-
 </div>

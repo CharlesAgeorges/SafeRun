@@ -14,6 +14,7 @@
     </div>
   <% end %>
 
+  <div class="d-flex justify-content-center gap-3">
     <% if @run.status == "planned" %>
       <%= button_to start_run_path(@run), method: :patch, class: "btn" do %>
         <i class="fa-regular fa-circle-play fa-3x"></i>
@@ -37,13 +38,12 @@
         <i class="fa-regular fa-circle-xmark fa-3x"></i>
       <% end %>
     <% end %>
-</div>
-<%= button_to "Tester alert", start_alert_run_path(@run), method: :post %>
-<%= button_to "Tester end", end_alert_run_path(@run), method: :post %>
-<%= button_to "Tester OT", over_time_alert_run_path(@run), method: :post %>
-<%= button_to "Tester Incident", incident_alert_run_path(@run), method: :post %>
 
-<div><%= link_to "Retour", runs_path %></div>
+    <%= button_to incident_alert_run_path(@run), method: :post, class: "btn" do %>
+      <i class="fa-solid fa-triangle-exclamation fa-3x" style="color: #ff3d3d;"></i>
+    <% end %>
+  </div>
+</div>
 
 <div id="map"
      data-controller="map"

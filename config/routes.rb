@@ -11,6 +11,8 @@ Rails.application.routes.draw do
         patch "resume", to: "runs#resume_run", as: :resume
         patch "end", to: "runs#end_run", as: :end
         post :start_alert, to: 'guardian_notifications#run_start_alert'
+        post :end_alert, to: "guardian_notifications#run_end_alert"
+        post :over_time_alert, to: "guardian_notifications#over_time_alert"
       end
       resources :positions, only: :create
       resources :run_badges, only: :create

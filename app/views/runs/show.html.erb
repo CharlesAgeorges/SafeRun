@@ -39,6 +39,8 @@
     <% end %>
 </div>
 <%= button_to "Tester alert", start_alert_run_path(@run), method: :post %>
+<%= button_to "Tester end", end_alert_run_path(@run), method: :post %>
+<%= button_to "Tester OT", over_time_alert_run_path(@run), method: :post %>
 
 <div><%= link_to "Retour", runs_path %></div>
 

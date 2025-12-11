@@ -20,7 +20,6 @@
           <%= run.distance %> km |
           <%= run.duration %> min |
           <%= run.start_point %> |
-          <%= link_to "Voir", run_path(run) %>
           <%= link_to "Supprimer", run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette course ?" },class: "text-danger" %>
         </li>
       <% end %>

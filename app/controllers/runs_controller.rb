@@ -51,6 +51,7 @@ class RunsController < ApplicationController
         status: "running",
         started_at: Time.current
       )
+      TwilioService.new.run_start_alert(@run, current_user)
       redirect_to @run, notice: "Course démarrée"
     else
       redirect_to @run, alert: "Cette course ne peut pas être démarrée"
@@ -63,6 +64,7 @@ class RunsController < ApplicationController
         status: "ended",
         ended_at: Time.current
       )
+      TwilioService.new.run_end_alert(@run, current_user)
       redirect_to @run, notice: "Run terminée"
     else
       redirect_to @run, alert: "Erreur lors de la fin de la run"

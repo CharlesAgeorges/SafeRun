@@ -1,19 +1,17 @@
-<div class = container>
+<%= simple_form_for(guardian) do |f| %>
 
-<%= form_with model: guardian do |f| %>
-  <div>
-    <%= f.label :name, "Nom" %><br>
-    <%= f.text_field :name %>
+  <div class="user-profile_group">
+    <%= f.label :name, "Nom", class: "user-profile_label" %>
+    <%= f.input_field :name, class: "user-profile_input", required: true %>
   </div>
 
-  <div>
-    <%= f.label :phone_number, "Numéro de téléphone" %><br>
-    <%= f.text_field :phone_number %>
+  <div class="user-profile_group">
+    <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
+    <%= f.input_field :phone_number, class: "user-profile_input", required: true %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="user-profile_actions">
+    <%= f.submit "Enregistrer", class: "btn btn-success btn-lg return-training-btn" %>
   </div>
+
 <% end %>
-
-</div>

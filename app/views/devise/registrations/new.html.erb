@@ -1,27 +1,14 @@
-<div class = container>
-<div><h2>Sign up</h2></div>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+<div class="user_profile_banner">
+  <%= image_tag "banner_sign_in.jpg", class: "user_profile_banner_img", alt: "Banner" %>
+  <div class="user_profile_banner_overlay"></div>
+  <div class="user_profile_banner_content">
+    <h1>Inscription</h1>
+    <p>Créer ton compte pour rejoindre la communauté SafeRun.</p>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+<div class="container">
+  <div class="user-profile">
+    <%= render "form" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 </div>

@@ -1,13 +1,7 @@
+<%= render "shared/navbar" %>
+
 <div class = container>
 <div class="run-card">
-  <p><strong>ID :</strong> <%= @run.id %></p>
-  <p><strong>Status :</strong> <%= @run.status %></p>
-  <p><strong>Guardians :</strong>
-    <%= @run.guardians.map(&:name).join(", ").presence || "-" %>
-  </p>
-
-  <p><strong>Distance :</strong> <%= @run.distance || "N/A" %> km</p>
-  <p><strong>Durée :</strong> <%= @run.duration || "N/A" %> min</p>
   <p><strong>Point de départ :</strong> <%= @run.start_point || "-" %></p>
   <p><strong>Début :</strong> <%= @run.started_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
   <p><strong>Fin :</strong> <%= @run.ended_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
@@ -21,19 +15,27 @@
   <% end %>
 
     <% if @run.status == "planned" %>
-      <%= button_to "Démarrer", start_run_path(@run),method: :patch,class: "btn btn-primary" %>
+      <%= button_to start_run_path(@run), method: :patch, class: "btn" do %>
+        <i class="fa-regular fa-circle-play fa-3x"></i>
+      <% end %>
     <% end %>
 
     <% if @run.status == "running" %>
-      <%= button_to "Mettre en pause", pause_run_path(@run),method: :patch, class: "btn btn-warning" %>
+      <%= button_to pause_run_path(@run), method: :patch, class: "btn" do %>
+        <i class="fa-regular fa-circle-pause fa-3x"></i>
+      <% end %>
     <% end %>
 
     <% if @run.status == "paused" %>
-      <%= button_to "Reprendre", resume_run_path(@run), method: :patch, class: "btn btn-success" %>
+      <%= button_to resume_run_path(@run), method: :patch, class: "btn" do %>
+        <i class="fa-regular fa-circle-play fa-3x"></i>
+      <% end %>
     <% end %>
 
     <% if @run.status.in?(%w[running paused]) %>
-      <%= button_to "Terminer", end_run_path(@run),method: :patch, class: "btn btn-danger" %>
+      <%= button_to end_run_path(@run), method: :patch, class: "btn", data: { turbo_confirm: "Es-tu sûr de vouloir terminer ta run ?" } do %>
+        <i class="fa-regular fa-circle-xmark fa-3x"></i>
+      <% end %>
     <% end %>
 </div>
 <%= button_to "Tester alert", start_alert_run_path(@run), method: :post %>
@@ -45,7 +47,7 @@
 <div id="map"
      data-controller="map"
      data-map-api-key-value="<%= ENV['MAPBOX'] %>"
-     data-map-markers-value="<%= [{ lat: @run.start_point_lat, lng: @run.start_point_lng }].to_json %>"
+     data-map-markers-value="<%= [{lat: @run.start_point_lat,lng: @run.start_point_lng,info_window_html: render(partial: 'shared/map_popup', locals: { run: @run })}].to_json %>"
      style="width: 100%; height: 50vh; min-height: 200px;">
 </div>
 </div>

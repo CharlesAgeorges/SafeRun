@@ -1,4 +1,6 @@
-<div class="form_container">
+<div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
+
+   <div><h1>Nouveau Guardian</h1></div>
 <%= simple_form_for(guardian) do |f| %>
 
   <div class="user-profile_group">
@@ -12,7 +14,7 @@
   </div>
 
   <div class="user-profile_actions">
-    <%= f.submit "Enregistrer", class: "btn btn-success btn-lg return-training-btn" %>
+    <%= f.submit "Enregistrer", class: "btn" %>
   </div>
 
 <% end %>

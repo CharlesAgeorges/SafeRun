@@ -1,5 +1,7 @@
-<<div class="container">
-<div class="user-profile_card mw-auto" style="max-width: 500px;">
+<<div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
+
+  <h1>Inscription</h1>
+  <p class="text-center mt-3">Créer ton compte pour rejoindre la communauté SafeRun.</p>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -41,8 +43,7 @@
       <%= f.submit "S'inscrire", class: "btn btn-success btn-lg return-training-btn" %>
     </div>
   <% end %>
-<div class="text-center mt-3">
-  <%= render "devise/shared/links" %>
+  <div class="text-center mt-3">
+    <%= render "devise/shared/links" %>
   </div>
-</div>
 </div>

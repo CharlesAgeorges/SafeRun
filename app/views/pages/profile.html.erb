@@ -1,4 +1,183 @@
 <%= render "shared/navbar" %>
-<div class = container>
-<h1>Mon Profil</h1>
+
+<div class="container py-4 mb-5 pb-4">
+  <h1 class="mb-4">Mon Profil</h1>
+
+  <!-- Navigation par onglets -->
+  <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active police" id="runs-tab" data-bs-toggle="tab" data-bs-target="#runs" type="button" role="tab" aria-controls="runs" aria-selected="true">
+        <i class="fas fa-running me-2"></i>Runs
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link police" id="guardians-tab" data-bs-toggle="tab" data-bs-target="#guardians" type="button" role="tab" aria-controls="guardians" aria-selected="false">
+        <i class="fas fa-shield-alt me-2"></i>Guardians
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link police" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">
+        <i class="fas fa-user me-2"></i>Infos
+      </button>
+    </li>
+  </ul>
+
+  <!-- Contenu des onglets -->
+  <div class="tab-content" id="profileTabsContent">
+
+    <!-- Onglet Runs -->
+    <div class="tab-pane fade show active" id="runs" role="tabpanel" aria-labelledby="runs-tab">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Historique des runs</h4>
+        <%= link_to new_run_path, class: "btn" do %>
+          <i class="fas fa-plus me-2"></i>Nouvelle run
+        <% end %>
+      </div>
+
+      <% if @runs.any? %>
+        <div class="row">
+          <% @runs.each do |run| %>
+            <div class="col-12 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <h6 class="card-title mb-1"><%= run.start_point %></h6>
+                      <small class="text-muted"><%= run.created_at.strftime("%d/%m/%Y") %></small>
+                    </div>
+                    <% status_class = case run.status
+                      when "planned" then "police"
+                      when "ended" then "green"
+                      when "running" then "blue"
+                      when "paused" then "orange"
+                    end %>
+                    <span class="fs-6 fw-normal <%= status_class %>"><%= run.status.capitalize %></span>
+                  </div>
+                  <div class="d-flex gap-3 mt-2">
+                    <span><i class="fas fa-route me-1"></i><%= number_with_precision(run.distance, precision: 2) %> km</span>
+                    <span><i class="fas fa-clock me-1"></i><%= run.duration %> min</span>
+                  </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <%= link_to run_path(run), class: "btn" do %>
+                    <i class="fas fa-eye me-1"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle me-2"></i>Vous n'avez pas encore de runs. Commencez votre premiere run !
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Onglet Guardians -->
+    <div class="tab-pane fade" id="guardians" role="tabpanel" aria-labelledby="guardians-tab">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Mes contacts d'urgence</h4>
+        <%= link_to new_guardian_path, class: "btn" do %>
+          <i class="fas fa-plus me-2"></i>Ajouter un guardian
+        <% end %>
+      </div>
+
+      <% if @guardians.any? %>
+        <div class="row">
+          <% @guardians.each do |guardian| %>
+            <div class="col-md-6 col-lg-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="fas fa-user-shield me-2 police"></i><%= guardian.name %>
+                  </h5>
+                  <p class="card-text">
+                    <i class="fas fa-phone me-2 police"></i><%= guardian.phone_number %>
+                  </p>
+                </div>
+                <div class="card-footer bg-transparent d-inline-flex">
+                  <%= link_to edit_guardian_path(guardian), class: "btn btn-sm px-3 me-2" do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                  <%= link_to guardian_path(guardian), data: { turbo_method: :delete, turbo_confirm: "Supprimer ce guardian ?" }, class: "btn btn-sm px-3" do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="alert alert-warning">
+          <i class="fas fa-exclamation-triangle me-2"></i>Vous n'avez pas encore de guardians. Ajoutez des contacts d'urgence pour plus de securite !
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Onglet Infos -->
+    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+      <h4 class="mb-3">Informations personnelles</h4>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-sm-4 text-muted">
+              <i class="fas fa-user me-2"></i>Nom
+            </div>
+            <div class="col-sm-8">
+              <%= @user.name || "Non renseigne" %>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-sm-4 text-muted">
+              <i class="fas fa-envelope me-2"></i>Email
+            </div>
+            <div class="col-sm-8">
+              <%= @user.email %>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-sm-4 text-muted">
+              <i class="fas fa-phone me-2"></i>Telephone
+            </div>
+            <div class="col-sm-8">
+              <%= @user.phone_number || "Non renseigne" %>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-sm-4 text-muted">
+              <i class="fas fa-calendar me-2"></i>Membre depuis
+            </div>
+            <div class="col-sm-8">
+              <%= @user.created_at.strftime("%d/%m/%Y") %>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-4 text-muted">
+              <i class="fas fa-chart-bar me-2"></i>Statistiques
+            </div>
+            <div class="col-sm-8">
+              <span class=" me-2"><%= @runs.count %> runs</span>
+              <span class=" me-2"><%= @badges.count %> badges</span>
+              <span class=""><%= @guardians.count %> guardians</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer bg-transparent">
+          <%= link_to edit_user_registration_path, class: "btn" do %>
+            <i class="fas fa-edit me-2"></i>Modifier mes informations
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

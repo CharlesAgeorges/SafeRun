@@ -1,0 +1,41 @@
+  <div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
+
+    <div><h1>Nouvelle course</h1></div>
+
+    <%= form_with model: @run do |f| %>
+
+      <div>
+        <%= f.label :guardian_ids, "Sélectionner les guardians à notifier" %>
+        <%= f.collection_check_boxes :guardian_ids, @guardians, :id, :name do |b| %>
+          <div>
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label :duration, "Durée (minutes)" %>
+        <%= f.number_field :duration, min: 1 %>
+      </div>
+
+      <div>
+        <%= f.label :distance, "Distance (km)" %>
+        <%= f.number_field :distance, step: 0.1, min: 0 %>
+      </div>
+
+      <div>
+        <%= f.label :start_point, "Point de départ" %>
+        <%= f.text_field :start_point %>
+      </div>
+
+      <div>
+        <%= f.submit "Planifier la course" %>
+      </div>
+
+    <% end %>
+
+      <div>
+    <%= link_to "Retour", runs_path %>
+  </div>
+</div>

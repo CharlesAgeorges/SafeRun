@@ -6,15 +6,7 @@ export default class extends Controller {
   // connect() {
   //   console.log(this.hideTargets);
   // }
-  toggle(event) {
-    if (this.runsTargets.classList.contains("d-none")) {
-      this.runsTargets.classList.remove("d-none")
-      this.guardiansTarget.classList.add("d-none")
-      this.infosTarget.classList.add("d-none")
-    } else {
-      this.runsTargets.classList.add("d-none")
-      this.guardiansTarget.classList.remove("d-none")
-      this.infosTarget.classList.remove("d-none")
+    toggle() {
+      
     }
-  }
 }

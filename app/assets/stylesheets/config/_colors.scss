@@ -13,15 +13,47 @@ $middle-gray: #415E66;
 $dark-gray: #434E53;
 $info-gray: #334D54;
 
-.ourlight-gray {
-  color:$ourlight-gray !important;
-}
-
+// bg colors
 .bg-dark-gray {
   background-color:$dark-gray !important;
 }
 
+// polices colors
+.green {
+  color: $green !important;
+}
+
+.blue {
+  color: $blue !important;
+}
+
+.orange {
+  color: $orange !important;
+}
+
+
 .info-gray {
   color: $info-gray !important;
 }
+.police {
+  color: $dark-gray !important;
+}
 
+.ourlight-gray {
+  color:$ourlight-gray !important;
+}
+
+// nav-tabs colors
+.nav-tabs .nav-link.police {
+  color: $dark-gray !important;
+}
+
+.nav-tabs .nav-link.active {
+  border-width: 4px;
+  border-top-color: $dark-gray !important;
+  border-left-color: $dark-gray !important;
+  border-right-color: $dark-gray !important;
+  border-bottom-color: transparent !important;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}

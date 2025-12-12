@@ -8,13 +8,13 @@
           <i class="fa-solid fa-user ourlight-gray"></i>
         <% end %>
         <% current_run = current_user.runs.find_by(status: 'running') %>
-        <%= link_to (current_run ? run_path(current_run) : runs_path), class: "ourlight-gray" do %>
+        <%= link_to (current_run ? run_path(current_run) :  profile_path(anchor: "runs")), class: "ourlight-gray" do %>
           <i class="fa-solid fa-person-running ourlight-gray"></i>
         <% end %>
         <%= link_to badges_path, class: "ourlight-gray" do%>
           <i class="fa-solid fa-medal ourlight-gray"></i>
         <% end %>
-        <%= link_to guardians_path, class: "ourlight-gray" do%>
+        <%= link_to  profile_path(anchor: "guardians"), class: "ourlight-gray" do%>
           <i class="fa-solid fa-user-shield ourlight-gray"></i>
         <% end %>
         <%= link_to destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir vous déconnecter ?"}, class: "ourlight-gray" do%>

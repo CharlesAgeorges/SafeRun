@@ -59,8 +59,14 @@
                   </div>
                 </div>
                 <div class="card-footer bg-transparent">
-                  <%= link_to run_path(run), class: "btn" do %>
+                  <% if run.status == "planned" || run.status == "paused" || run.status == "running" %>
+                    <%= link_to run_path(run), class: "btn" do %>
                     <i class="fas fa-eye me-1"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn btn-sm px-3" do %>
+                    <i class="fas fa-trash"></i>
+                    <% end %>
                   <% end %>
                 </div>
               </div>

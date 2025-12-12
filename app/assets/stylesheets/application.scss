@@ -9,6 +9,11 @@
 @import "bootstrap";
 @import "font-awesome";
 
+//h1 override
+h1, .h1 {
+  font-family: $h1-font;
+}
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";

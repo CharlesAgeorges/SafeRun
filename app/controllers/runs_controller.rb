@@ -3,6 +3,10 @@ class RunsController < ApplicationController
   before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit]
 
   def new
+    if current_user.guardians.empty?
+      redirect_to new_guardian_path, alert: "Tu dois ajouter au moins un guardian avant de créer une run"
+      return
+    end
     @run = Run.new
     @guardians = current_user.guardians
   end
@@ -46,7 +50,9 @@ class RunsController < ApplicationController
   end
 
   def start_run
-    if @run.status == "planned"
+    if @run.guardians.empty?
+      redirect_to new_guardian_path, alert: "Tu dois ajouter au moins un guardian avant de démarrer ta run"
+    elsif @run.status == "planned"
       @run.update(
         status: "running",
         started_at: Time.current

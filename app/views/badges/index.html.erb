@@ -4,14 +4,11 @@
   <div>
     <% @badges.each do |badge| %>
       <h2>
-        <%= link_to badge.name, badge_path(badge) %>
+        <i class="fa-solid fa-crow"></i>
+        <%= link_to badge.name, badge_path(badge), class: "text-decoration-none text-dark" %>
       </h2>
     <% end %>
   </div>
   <div>
-    <%= link_to "Accueil", root_path %> |
-    <%= link_to "Profil", profile_path %> |
-    <%= link_to "Runs", profile_path(anchor: "runs") %> |
-    <%= link_to "Guardians", profile_path(anchor: "guardians") %>
   </div>
 </div>

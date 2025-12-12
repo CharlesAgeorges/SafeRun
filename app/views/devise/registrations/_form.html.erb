@@ -1,6 +1,6 @@
-<div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
+<div class="form_container bg-light-gray" style="height: calc(100% - 100px); margin: 0 auto; padding: 20px; max-width: 420px;">
 
-  <h1>Inscription</h1>
+  <h1 class="text-center">Inscription</h1>
   <p class="text-center mt-3">Créer ton compte pour rejoindre la communauté SafeRun.</p>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -8,25 +8,17 @@
 
     <div class="user-profile_group">
       <%= f.label :name, "Votre nom" %>
-      <%= f.text_field :name,
-            class: "user-profile_input",
-            autofocus: true,
-            autocomplete: "name" %>
+      <%= f.text_field :name, class: "user-profile_input", autofocus: true %>
     </div>
 
     <div class="user-profile_group">
       <%= f.label :email, "Email" %>
-      <%= f.email_field :email,
-            class: "user-profile_input",
-            autofocus: true,
-            autocomplete: "email" %>
+      <%= f.email_field :email, class: "user-profile_input" %>
     </div>
 
     <div class="user-profile_group">
       <%= f.label :password, "Mot de passe" %>
-      <%= f.password_field :password,
-            class: "user-profile_input",
-            autocomplete: "new-password" %>
+      <%= f.password_field :password, class: "user-profile_input" %>
       <% if @minimum_password_length %>
         <p class="user-profile_hint"><%= @minimum_password_length %> caractères minimum</p>
       <% end %>
@@ -34,16 +26,11 @@
 
     <div class="user-profile_group">
       <%= f.label :password_confirmation, "Confirmation du mot de passe" %>
-      <%= f.password_field :password_confirmation,
-            class: "user-profile_input",
-            autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, class: "user-profile_input" %>
     </div>
 
     <div class="user-profile_actions d-flex justify-content-center mt-4">
       <%= f.submit "S'inscrire", class: "btn btn-success btn-lg return-training-btn" %>
     </div>
   <% end %>
-  <%# <div class="text-center mt-3">
-    <%= render "devise/shared/links" %>
-  <%# </div> %>
 </div>

@@ -97,10 +97,10 @@
                   </p>
                 </div>
                 <div class="card-footer bg-transparent d-inline-flex">
-                  <%= link_to edit_guardian_path(guardian), class: "btn btn-sm me-2" do %>
+                  <%= link_to edit_guardian_path(guardian), class: "btn btn-sm px-3 me-2" do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
-                  <%= link_to guardian_path(guardian), method: :delete, class: "btn btn-sm mt-1", data: { turbo_confirm: "Supprimer ce guardian ?" } do %>
+                  <%= link_to guardian_path(guardian), data: { turbo_method: :delete, turbo_confirm: "Supprimer ce guardian ?" }, class: "btn btn-sm px-3" do %>
                     <i class="fas fa-trash"></i>
                   <% end %>
                 </div>

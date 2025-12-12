@@ -19,7 +19,7 @@ class TwilioService
     run.guardians.each do |guardian|
       send_sms(
         to: guardian.phone_number,
-        body: "#{user.name} a démarré une run à #{run.start_point}, qui devrait durer #{run.duration} minutes, jettes un oeil à tes notifs le moment venu pour savoir si tout est ok!"
+        body: "🏃 #{user.name} a démarré une run !\n\n📍 #{run.start_point}\n⏱️ Durée prévue : #{run.duration} minutes.\n\nOn te tient au courant quand c'est terminé 👍"
       )
     end
   end
@@ -28,7 +28,7 @@ class TwilioService
     run.guardians.each do |guardian|
       send_sms(
         to: guardian.phone_number,
-        body: "#{user.name} a terminé sa run à #{run.start_point}, merci d'avoir été son Guardian Angel!"
+        body: "✅ #{user.name} a terminé sa run !\n\n📍 #{run.start_point}\n\nMerci d'avoir été son Guardian Angel 🛡️"
       )
     end
   end
@@ -37,7 +37,7 @@ class TwilioService
     run.guardians.each do |guardian|
       send_sms(
         to: guardian.phone_number,
-        body: "#{user.name} était sensé(e) terminer sa run à #{run.start_point} il y'a 5 minutes mais n'a pas donné de nouvelles, passes lui un petit coup de fil pour vérifier que tout va bien!"
+        body: "⚠️ #{user.name} devait terminer sa run il y a 5 minutes.\n\n📍 #{run.start_point}\n\nPasse-lui un coup de fil pour vérifier que tout va bien 📞"
       )
     end
   end
@@ -46,7 +46,7 @@ class TwilioService
     run.guardians.each do |guardian|
       send_sms(
         to: guardian.phone_number,
-        body: "#{user.name} t'envoie cette alerte depuis sa run à #{run.start_point}, prends contact avec il/elle ou les secours si tu n'arrives plus à l'avoir"
+        body: "🚨 ALERTE de #{user.name} !\n\n📍 #{run.start_point}\n\nContacte-le/la ou appelle les secours si pas de réponse 🆘"
       )
     end
   end

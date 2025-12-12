@@ -42,7 +42,7 @@ class RunsController < ApplicationController
 
   def destroy
     @run.destroy
-    redirect_to runs_path, notice: "Run supprimée"
+    redirect_to profile_path(anchor: "runs"), notice: "Run supprimée"
   end
 
   def start_run
@@ -65,7 +65,7 @@ class RunsController < ApplicationController
         ended_at: Time.current
       )
       TwilioService.new.run_end_alert(@run, current_user)
-      redirect_to runs_path, notice: "Run terminée"
+      redirect_to profile_path(anchor: "runs"), notice: "Run terminée"
     else
       redirect_to @run, alert: "Erreur lors de la fin de la run"
     end

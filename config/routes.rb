@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :guardians
-  resources :runs do
+  resources :guardians, except: [:index, :show]
+  resources :runs, except: [:index] do
       member do
         patch "start", to: "runs#start_run", as: :start
         patch "pause", to: "runs#pause_run", as: :pause

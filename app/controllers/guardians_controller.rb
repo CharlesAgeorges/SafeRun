@@ -17,7 +17,7 @@ class GuardiansController < ApplicationController
     @guardian = current_user.guardians.new(guardian_params)
 
     if @guardian.save
-      redirect_to @guardian, notice: "Votre Gardien a bien été créé !"
+      redirect_to profile_path(anchor: "guardians"), notice: "Votre Guardian a bien été créé !"
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class GuardiansController < ApplicationController
 
   def update
     if @guardian.update(guardian_params)
-      redirect_to @guardian, notice: "Votre Guardian a bien été mis à jour !"
+      redirect_to profile_path(anchor: "guardians"), notice: "Votre Guardian a bien été mis à jour !"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class GuardiansController < ApplicationController
 
   def destroy
     @guardian.destroy
-    redirect_to guardians_path, notice: "Votre Guardian a bien été supprimé !"
+    redirect_to profile_path(anchor: "guardians"), notice: "Votre Guardian a bien été supprimé !"
   end
 
   private

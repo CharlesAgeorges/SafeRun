@@ -4,3 +4,13 @@
   background-color: $dark-gray;
   color: $ourlight-gray;
 }
+
+.btn-home {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: $ourlight-gray;
+  color: $dark-gray;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}

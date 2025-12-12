@@ -21,18 +21,50 @@ $bleu-vert-fonce:      #2E4040;
 $noir-bis:             #1E1F20;
 
 
-.ourlight-gray {
-  color:$ourlight-gray !important;
-}
-
+// bg colors
 .bg-dark-gray {
   background-color:$dark-gray !important;
 }
 
-.info-gray {
-  color: $info-gray;
+// polices colors
+.green {
+  color: $green !important;
 }
 
+.blue {
+  color: $blue !important;
+}
+
+.orange {
+  color: $orange !important;
+}
+
+
+.info-gray {
+  color: $info-gray !important;
+}
+.police {
+  color: $dark-gray !important;
+}
+
+.ourlight-gray {
+  color:$ourlight-gray !important;
+}
+
+// nav-tabs colors
+.nav-tabs .nav-link.police {
+  color: $dark-gray !important;
+}
+
+.nav-tabs .nav-link.active {
+  border-width: 4px;
+  border-top-color: $dark-gray !important;
+  border-left-color: $dark-gray !important;
+  border-right-color: $dark-gray !important;
+  border-bottom-color: transparent !important;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 .bg-light-gray {
   background-color:$light-gray !important;
+}
 }

@@ -1,0 +1,103 @@
+.run-page {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.run-page #map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.run-info {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 16px;
+  text-align: center;
+  z-index: 1031;
+}
+
+.run-timer {
+  position: fixed;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 1031;
+}
+
+.run-timer__time {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.run-controls {
+  position: fixed;
+  bottom: 56px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  border-radius: 18px 18px 0 0;
+  padding: 18px 32px;
+  z-index: 1031;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+}
+.run-btn {
+  box-sizing: border-box;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #333;
+  color: white;
+  font-size: 2rem;
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+.run-btn--main {
+  width: 84px;
+  height: 84px;
+  font-size: 2.3rem;
+}
+
+.run-btn--play {
+  background: #27ae60;
+}
+
+.run-btn--pause {
+  background: #f39c12;
+}
+
+.run-btn--alert {
+  background: #e74c3c;
+}

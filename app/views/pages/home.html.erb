@@ -4,10 +4,9 @@
   <h1 class="ourlight-gray" style="display: flex; justify-content: center; padding-top: 10vh;">SafeRun</h1>
   <div class="d-flex justify-content-center">
     <% if user_signed_in? %>
-      <%= link_to "Lancer une Run", new_run_path, class: "btn", style: "margin-top: 20vh;" %>
+      <%= link_to "Lancer une Run", new_run_path, class: "btn-home", style: "margin-top: 20vh;" %>
     <% else %>
-      <%= link_to "Se connecter", new_user_session_path, class: "btn", style: "margin-top: 20vh;" %>
+      <%= link_to "Se connecter", new_user_session_path, class: "btn-home", style: "margin-top: 20vh;" %>
     <% end %>
-
   </div>
 </div>

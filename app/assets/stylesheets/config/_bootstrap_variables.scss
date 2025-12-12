@@ -11,7 +11,7 @@ $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
+$body-color: $dark-gray;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
@@ -26,3 +26,6 @@ $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
+
+//headers
+$h1-font-size: 4rem;

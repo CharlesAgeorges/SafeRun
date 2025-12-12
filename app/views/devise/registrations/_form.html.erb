@@ -1,4 +1,4 @@
-<<div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
+<div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
 
   <h1>Inscription</h1>
   <p class="text-center mt-3">Créer ton compte pour rejoindre la communauté SafeRun.</p>
@@ -7,7 +7,7 @@
     <%= f.error_notification %>
 
     <div class="user-profile_group">
-      <%= f.label :name, "Votre nom", class: "user-profile_label" %>
+      <%= f.label :name, "Votre nom" %>
       <%= f.text_field :name,
             class: "user-profile_input",
             autofocus: true,
@@ -15,7 +15,7 @@
     </div>
 
     <div class="user-profile_group">
-      <%= f.label :email, "Email", class: "user-profile_label" %>
+      <%= f.label :email, "Email" %>
       <%= f.email_field :email,
             class: "user-profile_input",
             autofocus: true,
@@ -23,7 +23,7 @@
     </div>
 
     <div class="user-profile_group">
-      <%= f.label :password, "Mot de passe", class: "user-profile_label" %>
+      <%= f.label :password, "Mot de passe" %>
       <%= f.password_field :password,
             class: "user-profile_input",
             autocomplete: "new-password" %>
@@ -33,7 +33,7 @@
     </div>
 
     <div class="user-profile_group">
-      <%= f.label :password_confirmation, "Confirmation du mot de passe", class: "user-profile_label" %>
+      <%= f.label :password_confirmation, "Confirmation du mot de passe" %>
       <%= f.password_field :password_confirmation,
             class: "user-profile_input",
             autocomplete: "new-password" %>
@@ -43,7 +43,7 @@
       <%= f.submit "S'inscrire", class: "btn btn-success btn-lg return-training-btn" %>
     </div>
   <% end %>
-  <div class="text-center mt-3">
+  <%# <div class="text-center mt-3">
     <%= render "devise/shared/links" %>
-  </div>
+  <%# </div> %>
 </div>

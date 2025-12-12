@@ -1,21 +1,22 @@
 <div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
 
    <div><h1>Nouveau Guardian</h1></div>
-<%= simple_form_for(guardian) do |f| %>
 
-  <div class="user-profile_group">
-    <%= f.label :name, "Nom", class: "user-profile_label" %>
-    <%= f.input_field :name, class: "user-profile_input", required: true %>
-  </div>
+  <%= simple_form_for(guardian) do |f| %>
 
-  <div class="user-profile_group">
-    <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
-    <%= f.input_field :phone_number, class: "user-profile_input", required: true %>
-  </div>
+    <div class="user-profile_group">
+      <%= f.label :name, "Nom", class: "user-profile_label" %>
+      <%= f.input_field :name, class: "user-profile_input", required: true %>
+    </div>
 
-  <div class="user-profile_actions">
-    <%= f.submit "Enregistrer", class: "btn" %>
-  </div>
+    <div class="user-profile_group">
+      <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
+      <%= f.input_field :phone_number, class: "user-profile_input", required: true %>
+    </div>
 
-<% end %>
+    <div class="user-profile_actions">
+     <%= f.submit "Enregistrer", class: "btn" %>
+    </div>
+
+  <% end %>
 </div>

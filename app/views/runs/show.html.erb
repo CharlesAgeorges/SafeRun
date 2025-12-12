@@ -1,54 +1,56 @@
 <%= render "shared/navbar" %>
 
-<div class = container>
-<div class="run-card">
-  <p><strong>Point de départ :</strong> <%= @run.start_point || "-" %></p>
-  <p><strong>Début :</strong> <%= @run.started_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
-  <p><strong>Fin :</strong> <%= @run.ended_at&.strftime("%d/%m/%Y %H:%M") || "-" %></p>
+<div class="run-page">
+  <div id="map"
+       data-controller="map"
+       data-map-api-key-value="<%= ENV['MAPBOX'] %>"
+       data-map-markers-value="<%= [{lat: @run.start_point_lat, lng: @run.start_point_lng}].to_json %>">
+  </div>
 
+  <div class="run-info">
+    <strong><%= @run.start_point %></strong>
+    <div><i class="fa-solid fa-user-shield"></i> <%= @run.guardians.map(&:name).join(', ').presence || 'Aucun guardian' %></div>
+  </div>
 
   <% if @run.status.in?(%w[running paused]) %>
-    <p><strong>Temps écoulé :</strong></p>
-    <div data-controller="timer" data-timer-started-at-value="<%= @run.started_at.iso8601 %>" data-timer-paused-duration-value="<%= @run.paused_duration %>"data-timer-paused-value="<%= @run.status == 'paused' %>"style="font-size: 2rem; font-weight: bold;">
-      00:00:00
+    <div class="run-timer">
+      <div class="run-timer__time"
+           data-controller="timer"
+           data-timer-started-at-value="<%= @run.started_at.iso8601 %>"
+           data-timer-paused-duration-value="<%= @run.paused_duration %>"
+           data-timer-paused-value="<%= @run.status == 'paused' %>">
+        00:00:00
+      </div>
     </div>
   <% end %>
 
-  <div class="d-flex justify-content-center gap-3">
+  <div class="run-controls">
     <% if @run.status == "planned" %>
-      <%= button_to start_run_path(@run), method: :patch, class: "btn" do %>
-        <i class="fa-regular fa-circle-play fa-3x"></i>
+      <%= link_to start_run_path(@run), class: "run-btn run-btn--play", data: { turbo_method: :patch } do %>
+        <i class="fa-solid fa-play"></i>
       <% end %>
     <% end %>
 
     <% if @run.status == "running" %>
-      <%= button_to pause_run_path(@run), method: :patch, class: "btn" do %>
-        <i class="fa-regular fa-circle-pause fa-3x"></i>
+      <%= link_to pause_run_path(@run), class: "run-btn run-btn--pause", data: { turbo_method: :patch } do %>
+        <i class="fa-solid fa-pause"></i>
       <% end %>
     <% end %>
 
     <% if @run.status == "paused" %>
-      <%= button_to resume_run_path(@run), method: :patch, class: "btn" do %>
-        <i class="fa-regular fa-circle-play fa-3x"></i>
+      <%= link_to resume_run_path(@run), class: "run-btn run-btn--play", data: { turbo_method: :patch } do %>
+        <i class="fa-solid fa-play"></i>
       <% end %>
     <% end %>
 
     <% if @run.status.in?(%w[running paused]) %>
-      <%= button_to end_run_path(@run), method: :patch, class: "btn", data: { turbo_confirm: "Es-tu sûr de vouloir terminer ta run ?" } do %>
-        <i class="fa-regular fa-circle-xmark fa-3x"></i>
+      <%= link_to end_run_path(@run), class: "run-btn run-btn--stop", data: { turbo_method: :patch, turbo_confirm: "Es-tu sûr de vouloir terminer ta run ?" } do %>
+        <i class="fa-solid fa-stop"></i>
       <% end %>
     <% end %>
 
-    <%= button_to incident_alert_run_path(@run), method: :post, class: "btn" do %>
-      <i class="fa-solid fa-triangle-exclamation fa-3x" style="color: #ff3d3d;"></i>
+    <%= link_to incident_alert_run_path(@run), class: "run-btn run-btn--alert", data: { turbo_method: :post } do %>
+      <i class="fa-solid fa-triangle-exclamation"></i>
     <% end %>
   </div>
-</div>
-
-<div id="map"
-     data-controller="map"
-     data-map-api-key-value="<%= ENV['MAPBOX'] %>"
-     data-map-markers-value="<%= [{lat: @run.start_point_lat,lng: @run.start_point_lng,info_window_html: render(partial: 'shared/map_popup', locals: { run: @run })}].to_json %>"
-     style="width: 100%; height: 50vh; min-height: 200px;">
-</div>
 </div>

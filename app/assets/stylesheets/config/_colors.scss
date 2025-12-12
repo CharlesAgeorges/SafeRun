@@ -12,6 +12,14 @@ $ourlight-gray:#E2DFD6;
 $middle-gray: #415E66;
 $dark-gray: #434E53;
 $info-gray: #334D54;
+// Couleurs rajouté
+$beige-clair:          #F2EDE6;
+$beige-grise:          #E6E0D8;
+$bleu-vert-clair:      #7AA0A0;
+$bleu-vert:            #4F6B6B;
+$bleu-vert-fonce:      #2E4040;
+$noir-bis:             #1E1F20;
+
 
 // bg colors
 .bg-dark-gray {
@@ -56,4 +64,6 @@ $info-gray: #334D54;
   border-bottom-color: transparent !important;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+.bg-light-gray {
+  background-color:$light-gray !important;
 }

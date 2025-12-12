@@ -1,0 +1,95 @@
+/* Centrage global du container */
+.form_container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  }
+
+  form > div {
+  margin-bottom: 15px;
+}
+
+.user-profile_label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+ input[type="text"],
+ input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+// div {
+//   margin-bottom: 5px;
+// }
+
+input[type="submit"] {
+  background-color: $dark-gray;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: $bleu-vert-clair;
+}
+
+a {
+  display: inline-block;
+  margin-top: 15px;
+  color: #2c7be5;
+}
+
+.user-profile_card {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.user-profile_group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.user-profile_input {
+  width: 100%;
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+}
+
+.background_container {
+  background-color: $bleu-vert;
+}
+
+/* Titre */
+/* Espacement des blocs du formulaire */
+/* Labels */
+/* Inputs */
+// /* Checkboxes */
+/* Bouton */
+/* Lien retour */

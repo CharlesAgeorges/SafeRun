@@ -65,7 +65,7 @@ class RunsController < ApplicationController
         ended_at: Time.current
       )
       TwilioService.new.run_end_alert(@run, current_user)
-      redirect_to @run, notice: "Run terminée"
+      redirect_to runs_path, notice: "Run terminée"
     else
       redirect_to @run, alert: "Erreur lors de la fin de la run"
     end

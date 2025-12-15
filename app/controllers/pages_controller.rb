@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     #end
   end
 
-    def profile
+  def profile
     @user = current_user
     @runs = @user.runs.order(created_at: :desc)
     @guardians = @user.guardians

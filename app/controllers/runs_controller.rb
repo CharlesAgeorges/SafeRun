@@ -1,6 +1,7 @@
 class RunsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:share]
   before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit over_time_alert]
+  before_action :set_run_public, only: [:share]
 
   def new
     if current_user.guardians.empty?
@@ -108,7 +109,15 @@ class RunsController < ApplicationController
     head :ok
   end
 
+  def share
+    redirect_to root_path, alert: "Cette course n'est pas terminée" unless @run.status == "ended"
+  end
+
   private
+
+  def set_run_public
+    @run = Run.find(params[:id])
+  end
 
   def set_run
     @run = current_user.runs.find(params[:id])

@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   def home
-    #if user_signed_in?
-      #redirect_to profile_path
-    #end
+    # if user_signed_in?
+    # redirect_to profile_path
+    # end
   end
 
   def profile
@@ -11,5 +11,5 @@ class PagesController < ApplicationController
     @guardians = @user.guardians
     @badges = @user.badges
     @run_badges = @user.run_badges
-  end
+  end # allo
 end

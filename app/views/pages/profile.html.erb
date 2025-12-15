@@ -26,7 +26,7 @@
   <div class="tab-content" id="profileTabsContent">
 
     <!-- Onglet Runs -->
-    <div class="tab-pane fade show active" id="runs" role="tabpanel" aria-labelledby="runs-tab" data-tabs-target="runs" data-action="click->tabs#toggle">
+    <div class="active" data-content="true" id="runs" role="tabpanel" aria-labelledby="runs-tab" data-tabs-target="runs" data-action="click->tabs#toggle">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h4>Historique des runs</h4>
         <%= link_to new_run_path, class: "btn" do %>
@@ -59,7 +59,15 @@
                   </div>
                 </div>
                 <div class="card-footer bg-transparent">
-                  <% if run.status == "planned" || run.status == "paused" || run.status == "running" %>
+
+                  <% if run.status == "planned" %>
+                    <%= link_to edit_run_path(run), class: "btn btn-sm px-3 me-2" do %>
+                    <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn btn-sm px-3" do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
+                    <% elsif  run.status == "paused" || run.status == "running" %>
                     <%= link_to run_path(run), class: "btn" do %>
                     <i class="fas fa-eye me-1"></i>
                     <% end %>
@@ -81,7 +89,7 @@
     </div>
 
     <!-- Onglet Guardians -->
-    <div class="tab-pane fade" id="guardians" role="tabpanel" aria-labelledby="guardians-tab" data-tabs-target="guardians" data-action="click->tabs#toggle">
+    <div class="" data-content="true" id="guardians" role="tabpanel" aria-labelledby="guardians-tab" data-tabs-target="guardians" data-action="click->tabs#toggle">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h4>Mes Guardians Angels</h4>
         <%= link_to new_guardian_path, class: "btn" do %>
@@ -122,7 +130,7 @@
     </div>
 
     <!-- Onglet Infos -->
-    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab" data-tabs-target="infos" data-action="click->tabs#toggle">
+    <div class="" data-content="true" id="info" role="tabpanel" aria-labelledby="info-tab" data-tabs-target="infos" data-action="click->tabs#toggle">
       <h4 class="mb-3">Informations personnelles</h4>
 
       <div class="card">

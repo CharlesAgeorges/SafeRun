@@ -2,7 +2,9 @@
   <div id="map"
        data-controller="map"
        data-map-api-key-value="<%= ENV['MAPBOX'] %>"
-       data-map-markers-value="<%= [{lat: @run.start_point_lat, lng: @run.start_point_lng}].to_json %>">
+       data-map-markers-value="<%= [{lat: @run.start_point_lat, lng: @run.start_point_lng}].to_json %>"
+       data-map-run-id-value="<%= @run.id %>"
+       data-map-positions-value="<%= @run.positions.map { |position| {lat: position.latitude, lng: position.longitude} }.to_json %>">
   </div>
 
   <div class="run-info">

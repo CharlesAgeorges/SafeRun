@@ -26,6 +26,7 @@ export default class extends Controller {
       // Active le bouton cliqué et affiche son contenu
       this[`${clickedTab}Targets`].forEach(el => {
         el.classList.add("active")
+        el.classList.remove("d-none")
         if (el.dataset.content) el.style.display = "block"
       })
     }

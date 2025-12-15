@@ -1,6 +1,6 @@
 class RunsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit]
+  before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit over_time_alert]
 
   def new
     if current_user.guardians.empty?
@@ -101,6 +101,11 @@ class RunsController < ApplicationController
     else
       redirect_to @run, alert: "Cette course ne peut pas être reprise"
     end
+  end
+
+  def over_time_alert
+    TwilioService.new.over_time_alert(@run, current_user)
+    head :ok
   end
 
   private

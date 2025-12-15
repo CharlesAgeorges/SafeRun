@@ -1,8 +1,9 @@
 <div class="container" style="background: white; min-height: calc(100vh - 56px); margin: 0 auto; padding: 40px 20px; max-width: 500px;">
 
+  <% if current_user.guardians.empty? %>
+    <p class="alert alert-warning">Tu dois ajouter au moins un guardian avant de créer une run</p>
+  <% end %>
+
   <div><%= render "form", guardian: @guardian %></div>
 
-  <%# <div><%= link_to "Retour", guardians_path</div> %>
 </div>
-
-<%= render "shared/navbar" %>

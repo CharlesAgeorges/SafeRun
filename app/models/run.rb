@@ -9,6 +9,17 @@ class Run < ApplicationRecord
   has_many :incidents, dependent: :destroy
   has_many :guardian_notifications, dependent: :destroy
   has_many :guardians, through: :guardian_notifications # ajout
-  has_many :run_badges
+  has_many :run_badges, dependent: :destroy
   has_many :badges, through: :run_badges
+
+  # Attribution automatique des badges quand le run se termine a checker !
+  after_update :award_badges_if_ended
+
+  private
+
+  def award_badges_if_ended
+    if saved_change_to_status? && status == "ended"
+      BadgeAwardService.new(self).award_badges
+    end
+  end
 end

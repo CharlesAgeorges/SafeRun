@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="tabs"
 export default class extends Controller {
-  static targets = ["runs", "guardians", "infos"]
+  static targets = ["runs", "guardians", "infos", "earned", "available"]
   // connect() {
   //   console.log(this.hideTargets);
   // }
@@ -19,6 +19,14 @@ export default class extends Controller {
         if (el.dataset.content) el.style.display = "none"
       })
       this.infosTargets.forEach(el => {
+        el.classList.remove("active")
+        if (el.dataset.content) el.style.display = "none"
+      })
+      this.earnedTargets.forEach(el => {
+        el.classList.remove("active")
+        if (el.dataset.content) el.style.display = "none"
+      })
+      this.availableTargets.forEach(el => {
         el.classList.remove("active")
         if (el.dataset.content) el.style.display = "none"
       })

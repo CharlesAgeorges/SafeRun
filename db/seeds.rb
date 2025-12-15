@@ -12,6 +12,7 @@ puts "Erasing previous data"
 Run.destroy_all
 Guardian.destroy_all
 Badge.destroy_all
+User.destroy_all
 
 
 puts "..."
@@ -20,10 +21,10 @@ puts "Creating User"
 
 puts "..."
 
-user = User.create!(email: "mail@mail.com") do |user|
+user = User.create!(email: "test@mail.com") do |user|
   user.password = "secret"
-  user.name = "Poutou Philippe"
-  user.phone_number = "+33606060606"
+  user.name = "Steve Morin"
+  user.phone_number = "+33642957681"
 end
 
 puts "User Created"
@@ -121,232 +122,88 @@ puts "Creating Badges"
 
 puts "..."
 
-Badge.create!(
-  name: "Night Owl",
-  description: "Completed a run after dark. You're not afraid of the night!"
-)
+# Badges de distance
+Badge.find_or_create_by!(name: "Semi Marathonien Bronze") do |badge|
+  badge.description = "Récompense pour avoir couru un run supérieur à 20km"
+end
 
-puts "1 Badge created"
+Badge.find_or_create_by!(name: "Long Runner Bronze") do |badge|
+  badge.description = "Run supérieur à 12 km"
+end
+
+Badge.find_or_create_by!(name: "Sprinteur 5K Bronze") do |badge|
+  badge.description = "A terminé un 5 km en dessous de 30 minutes"
+end
+
+Badge.find_or_create_by!(name: "Sprinteur 10K Bronze") do |badge|
+  badge.description = "A terminé un 10 km en dessous de 60 minutes"
+end
+
+Badge.find_or_create_by!(name: "Kilomètre Express") do |badge|
+  badge.description = "A couru 1 km en moins de 5 minutes"
+end
+
+# Badges de durée
+Badge.find_or_create_by!(name: "Endurant Bronze") do |badge|
+  badge.description = "Récompense pour avoir couru un run supérieur à 60 minutes"
+end
+
+# Badges de vitesse
+Badge.find_or_create_by!(name: "Rapide Bronze") do |badge|
+  badge.description = "Atteint une vitesse moyenne supérieure à 10 km/h"
+end
+
+# Badges horaires
+Badge.find_or_create_by!(name: "Morning Runner") do |badge|
+  badge.description = "Terminé un run avant 7h du matin"
+end
+
+Badge.find_or_create_by!(name: "Night Owl") do |badge|
+  badge.description = "Completed a run after dark. You're not afraid of the night!"
+end
+
+Badge.find_or_create_by!(name: "Night Performer") do |badge|
+  badge.description = "Terminé un run après 22h"
+end
+
+Badge.find_or_create_by!(name: "Midday Runner") do |badge|
+  badge.description = "Run effectué entre 12h et 14h"
+end
+
+# Badges hebdomadaires
+Badge.find_or_create_by!(name: "Weekend Warrior") do |badge|
+  badge.description = "Run effectué un samedi ou un dimanche"
+end
+
+# Badges de régularité
+Badge.find_or_create_by!(name: "Régulier Bronze") do |badge|
+  badge.description = "Couru 3 fois dans la même semaine"
+end
+
+Badge.find_or_create_by!(name: "Double Effort") do |badge|
+  badge.description = "2 runs le même jour"
+end
+
+Badge.find_or_create_by!(name: "Marathon Training Starter") do |badge|
+  badge.description = "A couru 4 heures cumulées en 7 jours"
+end
+
+# Badges de localisation
+Badge.find_or_create_by!(name: "Urban Runner") do |badge|
+  badge.description = "Run réalisé dans un espace urbain majeur"
+end
+
+Badge.find_or_create_by!(name: "Globe Runner") do |badge|
+  badge.description = "A couru dans 3 villes différentes"
+end
+
+# Badges de dénivelé
+Badge.find_or_create_by!(name: "Grimpeur Bronze") do |badge|
+  badge.description = "Run avec +200m de dénivelé positif"
+end
+
+puts "#{Badge.count} Badges created"
 
 puts "Amazing Badges Created"
 
 puts "Seeds up and running, SafeRunning!"
-
-
-
-Dans SEED
-
-puts "..."
-puts "Creating Challenges"
-puts "..."
-
-# Création des badges pour challenges si pas déjà créés
-semi_marathon_bronze = Badge.find_or_create_by!(
-  name: "Semi Marathonien Bronze",
-  description: "Récompense pour avoir couru un run supérieur à 20km"
-)
-
-endurant_bronze = Badge.find_or_create_by!(
-  name: "Endurant Bronze",
-  description: "Récompense pour avoir couru un run supérieur à 60 minutes"
-)
-
-# Création des challenges
-Challenge.create!(
-  name: "Courir plus de 20 km",
-  description: "Complétez un run supérieur à 20 km",
-  condition: "distance >= 20",
-  badge: semi_marathon_bronze
-)
-
-Challenge.create!(
-  name: "Endurance : 60 minutes",
-  description: "Complétez un run supérieur à 60 minutes",
-  condition: "duration >= 3600",
-  badge: endurant_bronze
-)
-
-badge_fast5k = Badge.find_or_create_by!(
-  name: "Sprinteur 5K Bronze",
-  description: "A terminé un 5 km en dessous de 30 minutes"
-)
-
-badge_fast10k = Badge.find_or_create_by!(
-  name: "Sprinteur 10K Bronze",
-  description: "A terminé un 10 km en dessous de 60 minutes"
-)
-
-badge_morning = Badge.find_or_create_by!(
-  name: "Morning Runner",
-  description: "Terminé un run avant 7h du matin"
-)
-
-badge_night = Badge.find_or_create_by!(
-  name: "Night Performer",
-  description: "Terminé un run après 22h"
-)
-
-badge_consistency = Badge.find_or_create_by!(
-  name: "Régulier Bronze",
-  description: "Couru 3 fois dans la même semaine"
-)
-
-badge_altitude = Badge.find_or_create_by!(
-  name: "Grimpeur Bronze",
-  description: "Run avec +200m de dénivelé positif"
-)
-
-badge_city_runner = Badge.find_or_create_by!(
-  name: "Urban Runner",
-  description: "Run réalisé dans un espace urbain majeur"
-)
-
-badge_speed = Badge.find_or_create_by!(
-  name: "Rapide Bronze",
-  description: "Atteint une vitesse moyenne supérieure à 10 km/h"
-)
-
-badge_long_week = Badge.find_or_create_by!(
-  name: "Long Runner Bronze",
-  description: "Run supérieur à 12 km"
-)
-
-badge_marathon_training = Badge.find_or_create_by!(
-  name: "Marathon Training Starter",
-  description: "A couru 4 heures cumulées en 7 jours"
-)
-
-badge_two_runs_day = Badge.find_or_create_by!(
-  name: "Double Effort",
-  description: "2 runs le même jour"
-)
-
-badge_lunch_run = Badge.find_or_create_by!(
-  name: "Midday Runner",
-  description: "Run effectué entre 12h et 14h"
-)
-
-badge_weekend_warrior = Badge.find_or_create_by!(
-  name: "Weekend Warrior",
-  description: "Run effectué un samedi ou un dimanche"
-)
-
-badge_multi_city = Badge.find_or_create_by!(
-  name: "Globe Runner",
-  description: "A couru dans 3 villes différentes"
-)
-
-badge_fast1k = Badge.find_or_create_by!(
-  name: "Kilomètre Express",
-  description: "A couru 1 km en moins de 5 minutes"
-)
-
-puts "Creating 15 new Challenges"
-puts "..."
-
-Challenge.find_or_create_by!(
-  name: "5K en moins de 30 minutes",
-  description: "Compléter un run de 5 km en dessous de 30 min",
-  condition: "distance >= 5 AND duration <= 1800",
-  badge: badge_fast5k
-)
-
-Challenge.find_or_create_by!(
-  name: "10K en moins de 60 minutes",
-  description: "Compléter un run de 10 km en moins de 60 min",
-  condition: "distance >= 10 AND duration <= 3600",
-  badge: badge_fast10k
-)
-
-Challenge.find_or_create_by!(
-  name: "Run avant 7h",
-  description: "Démarrer un run avant 7h du matin",
-  condition: "started_at.hour < 7",
-  badge: badge_morning
-)
-
-Challenge.find_or_create_by!(
-  name: "Run après 22h",
-  description: "Démarrer un run après 22h",
-  condition: "started_at.hour >= 22",
-  badge: badge_night
-)
-
-Challenge.find_or_create_by!(
-  name: "3 runs en 7 jours",
-  description: "Courir 3 fois en une semaine",
-  condition: "runs_per_week >= 3",
-  badge: badge_consistency
-)
-
-Challenge.find_or_create_by!(
-  name: "Dénivelé +200m",
-  description: "Atteindre au moins 200 m de dénivelé positif",
-  condition: "elevation_gain >= 200",
-  badge: badge_altitude
-)
-
-Challenge.find_or_create_by!(
-  name: "Urban Runner",
-  description: "Courir dans une grande ville",
-  condition: "location_type = 'urban'",
-  badge: badge_city_runner
-)
-
-Challenge.find_or_create_by!(
-  name: "Vitesse moyenne > 10 km/h",
-  description: "Maintenir une vitesse moyenne supérieure à 10 km/h",
-  condition: "distance / duration * 3600 >= 10",
-  badge: badge_speed
-)
-
-Challenge.find_or_create_by!(
-  name: "Run supérieur à 12 km",
-  description: "Effectuer un run d’au moins 12 km",
-  condition: "distance >= 12",
-  badge: badge_long_week
-)
-
-Challenge.find_or_create_by!(
-  name: "4 heures cumulées en 7 jours",
-  description: "Cumuler 4h de course en 7 jours",
-  condition: "weekly_duration >= 14400",
-  badge: badge_marathon_training
-)
-
-Challenge.find_or_create_by!(
-  name: "Deux runs dans la même journée",
-  description: "Faire 2 runs le même jour",
-  condition: "runs_in_day >= 2",
-  badge: badge_two_runs_day
-)
-
-Challenge.find_or_create_by!(
-  name: "Run de midi",
-  description: "Courir entre 12h et 14h",
-  condition: "started_at.hour BETWEEN 12 AND 14",
-  badge: badge_lunch_run
-)
-
-Challenge.find_or_create_by!(
-  name: "Weekend Warrior",
-  description: "Courir un samedi ou un dimanche",
-  condition: "weekday IN ('Saturday','Sunday')",
-  badge: badge_weekend_warrior
-)
-
-Challenge.find_or_create_by!(
-  name: "Courir dans 3 villes différentes",
-  description: "Avoir enregistré un run dans 3 villes distinctes",
-  condition: "unique_cities >= 3",
-  badge: badge_multi_city
-)
-
-Challenge.find_or_create_by!(
-  name: "1 km sous 5 minutes",
-  description: "Réaliser 1 km sous les 5 minutes",
-  condition: "best_km <= 300",
-  badge: badge_fast1k
-)
-
-puts "17 additional challenges created"

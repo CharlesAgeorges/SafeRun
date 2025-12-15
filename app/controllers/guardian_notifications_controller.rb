@@ -6,6 +6,10 @@ class GuardianNotificationsController < ApplicationController
     redirect_to @run, notice: "Alerte envoyée aux guardians"
   end
 
+  def over_time_alert
+    TwilioService.new.over_time_alert(@run, current_user)
+  end
+
   private
 
   def set_run

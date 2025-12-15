@@ -16,7 +16,9 @@
            data-controller="timer"
            data-timer-started-at-value="<%= @run.started_at.iso8601 %>"
            data-timer-paused-duration-value="<%= @run.paused_duration %>"
-           data-timer-paused-value="<%= @run.status == 'paused' %>">
+           data-timer-paused-value="<%= @run.status == 'paused' %>"
+           data-timer-duration-value="<%= @run.duration %>"
+           data-timer-over-time-url-value="<%= over_time_alert_run_path(@run) %>">
         00:00:00
       </div>
     </div>

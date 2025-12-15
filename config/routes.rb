@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         post :end_alert, to: "guardian_notifications#run_end_alert"
         post :over_time_alert, to: "guardian_notifications#over_time_alert"
         post :incident_alert, to: "guardian_notifications#incident_alert"
+        get :share
       end
       resources :positions, only: :create
       resources :run_badges, only: :create

@@ -25,9 +25,9 @@
         <%= f.number_field :distance, step: 0.1, min: 0 %>
       </div>
 
-      <div>
+      <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX'] %>" style="position: relative;">
         <%= f.label :start_point, "Point de départ" %>
-        <%= f.text_field :start_point %>
+        <%= f.text_field :start_point, data: { address_autocomplete_target: "input" }, placeholder: "Rechercher une adresse..." %>
       </div>
 
       <div>

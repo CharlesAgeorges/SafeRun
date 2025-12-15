@@ -103,10 +103,6 @@ class RunsController < ApplicationController
     end
   end
 
-  def countdown
-    @theorical_end_time = @run.started_at + @run.duration.minutes + @run.paused_duration.seconds
-  end
-
   def over_time_alert
     TwilioService.new.over_time_alert(@run, current_user)
     head :ok

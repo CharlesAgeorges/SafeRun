@@ -26,34 +26,34 @@
       </div>
     </div>
   <% end %>
-
-  <div class="run-controls">
-    <% if @run.status == "planned" %>
-      <%= link_to start_run_path(@run), class: "run-btn run-btn--play", data: { turbo_method: :patch } do %>
-        <i class="fa-solid fa-play"></i>
+  <% if @run.status.in?(%w[running paused planned]) %>
+    <div class="run-controls">
+      <% if @run.status == "planned" %>
+        <%= link_to start_run_path(@run), class: "run-btn run-btn--play", data: { turbo_method: :patch } do %>
+          <i class="fa-solid fa-play"></i>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <% if @run.status == "running" %>
-      <%= link_to pause_run_path(@run), class: "run-btn run-btn--pause", data: { turbo_method: :patch } do %>
-        <i class="fa-solid fa-pause"></i>
+      <% if @run.status == "running" %>
+        <%= link_to pause_run_path(@run), class: "run-btn run-btn--pause", data: { turbo_method: :patch } do %>
+          <i class="fa-solid fa-pause"></i>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <% if @run.status == "paused" %>
-      <%= link_to resume_run_path(@run), class: "run-btn run-btn--play", data: { turbo_method: :patch } do %>
-        <i class="fa-solid fa-play"></i>
+      <% if @run.status == "paused" %>
+        <%= link_to resume_run_path(@run), class: "run-btn run-btn--play", data: { turbo_method: :patch } do %>
+          <i class="fa-solid fa-play"></i>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <% if @run.status.in?(%w[running paused]) %>
-      <%= link_to end_run_path(@run), class: "run-btn run-btn--stop", data: { turbo_method: :patch, turbo_confirm: "Es-tu sûr de vouloir terminer ta run ?" } do %>
-        <i class="fa-solid fa-stop"></i>
+      <% if @run.status.in?(%w[running paused]) %>
+        <%= link_to end_run_path(@run), class: "run-btn run-btn--stop", data: { turbo_method: :patch, turbo_confirm: "Es-tu sûr de vouloir terminer ta run ?" } do %>
+          <i class="fa-solid fa-stop"></i>
+        <% end %>
       <% end %>
+      <%= link_to incident_alert_run_path(@run), class: "run-btn run-btn--alert", data: { turbo_method: :post } do %>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      <% end %>
+    </div>
     <% end %>
-
-    <%= link_to incident_alert_run_path(@run), class: "run-btn run-btn--alert", data: { turbo_method: :post } do %>
-      <i class="fa-solid fa-triangle-exclamation"></i>
-    <% end %>
-  </div>
 </div>

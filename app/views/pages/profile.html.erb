@@ -82,6 +82,9 @@
                     <% end %>
                   <% end %>
                   <% if run.status.in?(%w[ended]) %>
+                    <%= link_to make_public_run_path(run), data: { turbo_method: :patch }, class: "btn btn-sm px-3" do %>
+                      <i class="fa-solid fa-share"></i>
+                    <% end %>
                     <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn btn-sm px-3" do %>
                       <i class="fas fa-trash"></i>
                     <% end %>

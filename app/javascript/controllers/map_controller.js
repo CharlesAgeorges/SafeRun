@@ -6,7 +6,8 @@ export default class extends Controller {
     apiKey: String,
     markers: Array,
     runId: Number,
-    positions: Array
+    positions: Array,
+    status: String
   }
 
   connect() {
@@ -27,21 +28,30 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.#addGeolocateControl()
+    this.#setupGeolocate()
   }
 
-  #addGeolocateControl() {
-    const geolocate = new mapboxgl.GeolocateControl({
+  #setupGeolocate() {
+    this.geolocate = new mapboxgl.GeolocateControl({
       positionOptions: { enableHighAccuracy: true },
       trackUserLocation: true,
       showUserHeading: true
     })
 
-    this.map.addControl(geolocate)
+    this.map.addControl(this.geolocate)
 
-    geolocate.on("geolocate", (e) => {
-      this.#addPointToRoute(e.coords.longitude, e.coords.latitude)
+    this.geolocate.on("geolocate", (e) => {
+      if (this.statusValue === "running") {
+        this.#addPointToRoute(e.coords.longitude, e.coords.latitude)
+      }
     })
+
+    // Demarre automatiquement le tracking si la run est en cours
+    if (this.statusValue === "running") {
+      this.map.on("load", () => {
+        this.geolocate.trigger()
+      })
+    }
   }
 
   #addRouteLine() {

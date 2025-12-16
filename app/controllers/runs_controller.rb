@@ -34,9 +34,15 @@ class RunsController < ApplicationController
 
   def edit
     @guardians = current_user.guardians
+    if @run.status != "planned"
+      redirect_to @run, alert: "Seule une run planifiée peut être modifiée."
+    end
   end
 
   def update
+    if @run.status != "planned"
+      redirect_to @run, alert: "Seule une run planifiée peut être modifiée."
+    end
     if @run.update(run_params)
       redirect_to @run, notice: "Run modifiée"
     else

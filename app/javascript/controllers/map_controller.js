@@ -46,7 +46,6 @@ export default class extends Controller {
       }
     })
 
-    // Demarre automatiquement le tracking si la run est en cours
     if (this.statusValue === "running") {
       this.map.on("load", () => {
         this.geolocate.trigger()

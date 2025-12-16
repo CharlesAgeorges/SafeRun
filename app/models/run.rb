@@ -7,8 +7,14 @@ class Run < ApplicationRecord
   geocoded_by :start_point, latitude: :start_point_lat, longitude: :start_point_lng
   after_validation :geocode, if: :will_save_change_to_start_point?
 
-  validates :duration, :distance, :status, :start_point, presence: true
+  validates :duration, presence: true, numericality: { greater_than: 0 }
+  validates :distance, presence: true, numericality: { greater_than: 0 }
+  validates :start_point, presence: true
+  validates :status, presence: true, inclusion: { in: %w[planned running paused ended] }
+  validates :start_point_lat, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, allow_nil: true
+  validates :start_point_lng, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, allow_nil: true
 
+  
   has_many :positions, dependent: :destroy
   has_many :incidents, dependent: :destroy
   has_many :guardian_notifications, dependent: :destroy

@@ -12,6 +12,9 @@ class Run < ApplicationRecord
   has_many :run_badges, dependent: :destroy
   has_many :badges, through: :run_badges
 
+  # Vérifie si la run est publique (donc finie)
+  scope :safe_run, -> {where(status: "ended", public: true)}
+
   # Attribution automatique des badges quand le run se termine a checker !
   after_update :award_badges_if_ended
 
@@ -52,6 +55,11 @@ class Run < ApplicationRecord
     encoded_geojson = URI.encode_www_form_component(geojson.to_json)
 
     "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(#{encoded_geojson})/auto/#{width}x#{height}?access_token=#{ENV['MAPBOX']}"
+  end
+
+  # Check si la run est visible
+  def visible_to?(user)
+    user == self.user || self.public?
   end
 
   private

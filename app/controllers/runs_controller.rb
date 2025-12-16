@@ -1,6 +1,6 @@
 class RunsController < ApplicationController
   before_action :authenticate_user!, except: [:share]
-  before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit over_time_alert]
+  before_action :set_run, only: %i[show end_run start_run pause_run resume_run destroy update edit over_time_alert make_public]
   before_action :set_run_public, only: [:share]
 
   def new
@@ -111,6 +111,14 @@ class RunsController < ApplicationController
 
   def share
     redirect_to root_path, alert: "Cette course n'est pas terminée" unless @run.status == "ended"
+  end
+
+  def make_public
+    if run.status == "ended"
+      public: true, flash[:notice]
+    else
+      flash[:alert]
+    end
   end
 
   private

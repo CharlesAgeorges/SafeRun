@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: "pages#home"
-
+  
+  resources :public_runs, only: [:index, :show], path: 'explore'
   resources :guardians, except: [:index, :show]
   resources :runs, except: [:index] do
       member do
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
         patch "pause", to: "runs#pause_run", as: :pause
         patch "resume", to: "runs#resume_run", as: :resume
         patch "end", to: "runs#end_run", as: :end
+        patch :make_public
         post :start_alert, to: 'guardian_notifications#run_start_alert'
         post :end_alert, to: "guardian_notifications#run_end_alert"
         post :over_time_alert, to: "guardian_notifications#over_time_alert"

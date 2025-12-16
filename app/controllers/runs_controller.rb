@@ -72,6 +72,13 @@ class RunsController < ApplicationController
         ended_at: Time.current
       )
       TwilioService.new.run_end_alert(@run, current_user)
+
+      # pop up badge
+      awarded_badges = BadgeAwardService.new(@run).award_badges
+      if awarded_badges.any?
+        session[:awarded_badge_ids] = awarded_badges.map(&:id)
+      end
+
       redirect_to profile_path(anchor: "runs"), notice: "Run terminée"
     else
       redirect_to @run, alert: "Erreur lors de la fin de la run"

@@ -1,0 +1,37 @@
+<!-- Debug: awarded_badges = <%= @awarded_badges&.count || 'nil' %> -->
+<% if @awarded_badges&.any? %>
+  <div class="modal fade" id="badgesModal" tabindex="-1" aria-labelledby="badgesModalLabel" aria-hidden="true" data-controller="modal" data-modal-auto-open-value="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title w-100 text-center" id="badgesModalLabel">
+            <i class="fas fa-trophy me-2 text-warning"></i>Félicitations !
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="mb-4">Tu as débloqué <%= @awarded_badges.count == 1 ? "un nouveau badge" : "#{@awarded_badges.count} nouveaux badges" %> !</p>
+          <div class="row justify-content-center">
+            <% @awarded_badges.each do |badge| %>
+              <div class="col-6 mb-3">
+                <div class="card h-100 border-dark rounded-4">
+                  <div class="card-body text-center">
+                    <i class="fas fa-medal fa-3x text-warning mb-2"></i>
+                    <h6 class="card-title"><%= badge.name %></h6>
+                    <p class="card-text small text-muted"><%= badge.description %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <%= link_to badges_path, class: "btn rounded-3" do %>
+            <i class="fas fa-trophy me-2"></i>Voir tous mes badges
+          <% end %>
+          <button type="button" class="btn rounded-3" data-bs-dismiss="modal">Super !</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

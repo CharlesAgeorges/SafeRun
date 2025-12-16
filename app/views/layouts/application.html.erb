@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Safe Run" %></title>
+    <title><%= content_for(:title) || "SafeRun - Courez en toute securite" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="<%= content_for(:title) || 'SafeRun - Courez en toute securite' %>">
+    <meta property="og:description" content="<%= content_for(:description) || 'SafeRun securise vos sorties running avec un suivi en temps reel et des alertes automatiques pour vos proches.' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:image" content="<%= image_url('homepage_og_1200x630.jpg') %>">
+
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <%= favicon_link_tag "favicon.ico" %>
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>

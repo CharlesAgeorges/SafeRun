@@ -114,10 +114,11 @@ class RunsController < ApplicationController
   end
 
   def make_public
-    if run.status == "ended"
-      public: true, flash[:notice]
+    if @run.status == "ended"
+      @run.update(public: true)
+      redirect_to @run, notice: "Run rendue publique !"
     else
-      flash[:alert]
+      redirect_to @run, alert: "La run doit être terminée pour être partagée."
     end
   end
 

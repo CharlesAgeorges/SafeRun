@@ -12,7 +12,6 @@ class PagesController < ApplicationController
     @badges = @user.badges
     @run_badges = @user.run_badges
 
-    # Récupérer badges
     if session[:awarded_badge_ids].present?
       @awarded_badges = Badge.where(id: session[:awarded_badge_ids])
       session.delete(:awarded_badge_ids)

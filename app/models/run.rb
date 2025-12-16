@@ -12,9 +12,6 @@ class Run < ApplicationRecord
   has_many :run_badges, dependent: :destroy
   has_many :badges, through: :run_badges
 
-  # Attribution automatique des badges quand le run se termine a checker !
-  after_update :award_badges_if_ended
-
   def real_duration
     return nil unless started_at && ended_at
 
@@ -52,13 +49,5 @@ class Run < ApplicationRecord
     encoded_geojson = URI.encode_www_form_component(geojson.to_json)
 
     "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(#{encoded_geojson})/auto/#{width}x#{height}?access_token=#{ENV['MAPBOX']}"
-  end
-
-  private
-
-  def award_badges_if_ended
-    if saved_change_to_status? && status == "ended"
-      BadgeAwardService.new(self).award_badges
-    end
   end
 end

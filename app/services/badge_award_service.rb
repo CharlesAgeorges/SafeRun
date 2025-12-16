@@ -76,7 +76,7 @@ class BadgeAwardService
     else
       false
     end
-  rescue => e # MADE BY CLAUDE
+  rescue => e # MADE BY CLAUDE ?????
     Rails.logger.error "Erreur lors de la vérification du badge '#{badge.name}': #{e.message}"
     false
   end

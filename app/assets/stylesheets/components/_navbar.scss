@@ -1,11 +1,19 @@
-.navbar{
-  justify-content: space-between;
-  background: $dark-gray;
+.navbar {
+  background: #000;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 56px;
   z-index: 1030;
+
+  .container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+  }
 }
 
 .navbar .navbar-collapse {
@@ -14,4 +22,13 @@
 
 .navbar .navbar-brand img {
   width: 40px;
+}
+
+.navbar a i {
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.navbar a.active i {
+  color: $mystic-red !important;
 }

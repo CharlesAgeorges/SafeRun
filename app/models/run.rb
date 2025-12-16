@@ -16,6 +16,10 @@ class Run < ApplicationRecord
   has_many :run_badges, dependent: :destroy
   has_many :badges, through: :run_badges
 
+  # Vérifie si la run est publique (donc finie)
+  scope :safe_run, -> {where(status: "ended", public: true)}
+
+  # Attribution automatique des badges quand le run se termine a checker !
   after_update :award_badges_if_ended
 
   def real_duration
@@ -74,6 +78,11 @@ class Run < ApplicationRecord
       Rails.logger.error("[Map Matching] #{e.message}")
       raw_coords
     end
+  end
+
+  # Check si la run est visible
+  def visible_to?(user)
+    user == self.user || self.public?
   end
 
   private

@@ -7,16 +7,19 @@ class BadgeAwardService
   end
 
   def award_badges
-    return unless @run.status == "ended"
+    return [] unless @run.status == "ended"
 
+    awarded = []
     Badge.all.each do |badge|
       next if @run.badges.include?(badge) # Éviter les doublons
 
       if badge_earned?(badge)
         @run.run_badges.create!(badge: badge)
+        awarded << badge
         Rails.logger.info "Badge '#{badge.name}' attribué au run ##{@run.id}"
       end
     end
+    awarded
   end
 
   private

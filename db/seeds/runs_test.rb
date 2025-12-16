@@ -42,6 +42,7 @@ positions = [
 positions.each { |lat, lng| run.positions.create!(latitude: lat, longitude: lng) }
 
 puts "Run ##{run.id} cree avec #{positions.length} positions"
+puts "#{run.user_id}"
 puts "URL: /runs/#{run.id}"
 
 puts "Creation du run Noisy-Le-Sec -> Paris-Jaurès pour #{user.email}..."
@@ -124,4 +125,5 @@ positions = [
 positions.each { |lat, lng| run.positions.create!(latitude: lat, longitude: lng) }
 
 puts "Run ##{run.id} cree avec #{positions.length} positions"
+puts "#{run.user_id}"
 puts "URL: /runs/#{run.id}"

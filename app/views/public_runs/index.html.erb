@@ -1,39 +1,49 @@
-<h1>PublicRuns#index</h1>
-<p>Find me in app/views/public_runs/index.html.erb</p>
-<div class="container">
-  <% @runs.each do |run|  %>
-    <div class="card">
-      <% if run.status == "ended" && run.static_map_url %>
-        <%= image_tag run.static_map_url(width: 600, height: 200), class: "card-img-top" %>
-      <% end %>
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 class="card-title mb-1"><%= run.start_point %></h6>
-            <small class="text-muted"><%= run.created_at.strftime("%d/%m/%Y") %></small>
+<%= render "shared/navbar" %>
+
+<div class="container py-4 mb-5 pb-4">
+  <h1 class="profile-title">Safe Runs</h1>
+  <p>Voici toutes les Runs Safe partagées par nos utilisateurs</p>
+
+  <% if @runs.any? %>
+    <div class="row">
+      <% @runs.each do |run| %>
+        <div class="col-12 mb-3">
+          <div class="card">
+            <% if run.status == "ended" && run.static_map_url %>
+              <%= image_tag run.static_map_url(width: 600, height: 200), class: "card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <h6 class="card-title mb-1"><%= run.start_point %></h6>
+                  <small class="text-muted"><%= run.created_at.strftime("%d/%m/%Y") %></small>
+                </div>
+                <% status_class = case run.status
+                  when "planned" then "police"
+                  when "ended" then "green"
+                  when "running" then "blue"
+                  when "paused" then "orange"
+                end %>
+                <span class="fs-6 fw-normal <%= status_class %>"><%= run.status.capitalize %></span>
+              </div>
+              <div class="d-flex gap-3 mt-2">
+                <span><i class="fas fa-route me-1"></i><%= number_with_precision(run.distance, precision: 2) %> km</span>
+                <% if run.status == "ended" && run.real_duration_formatted %>
+                  <span><i class="fas fa-clock me-1"></i><%= run.real_duration_formatted %></span>
+                <% else %>
+                  <span><i class="fas fa-clock me-1"></i><%= run.duration %> min</span>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent">
+              <%= link_to public_run_path(run), class: "btn-profile-runs" do %>
+                <i class="fa-solid fa-eye"></i>
+              <% end %>
+            </div>
           </div>
-          <% status_class = case run.status
-            when "planned" then "police"
-            when "ended" then "green"
-            when "running" then "blue"
-            when "paused" then "orange"
-          end %>
-          <span class="fs-6 fw-normal <%= status_class %>"><%= run.status.capitalize %></span>
         </div>
-        <div class="d-flex gap-3 mt-2">
-          <span><i class="fas fa-route me-1"></i><%= number_with_precision(run.distance, precision: 2) %> km</span>
-          <% if run.status == "ended" && run.real_duration_formatted %>
-            <span><i class="fas fa-clock me-1"></i><%= run.real_duration_formatted %></span>
-          <% else %>
-            <span><i class="fas fa-clock me-1"></i><%= run.duration %> min</span>
-          <% end %>
-        </div>
-      </div>
-      <div class="card-footer bg-transparent">
-        <%= link_to public_run_path(run), class: "btn btn-sm px-3 me-2" do %>
-          <i class="fa-solid fa-eye"></i>
-        <% end %>
-      </div>
+      <% end %>
     </div>
+  <% else %>
   <% end %>
 </div>

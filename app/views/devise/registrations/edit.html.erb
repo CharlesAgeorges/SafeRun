@@ -1,82 +1,81 @@
-<div class="container" style="background: white; min-height: calc(100vh - 56px); margin: 0 auto; padding: 40px 20px; max-width: 500px;">
-<div class="form_container bg-light-gray" style="height: calc(100% - 100px); margin: 0 auto; padding: 20px; max-width: 420px;">
 
-  <div>
-    <h1>Modifier mon profil</h1>
-    <p>Met à jour tes informations personnelles.</p>
-  </div>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<div class="form_container mx-3 mt-3">
+  <h1>Modifier mon profil</h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-      <div class="user-profile_group">
-        <%= f.label :name, "Nom", class: "user-profile_label" %>
-        <%= f.text_field :name,
-              class: "user-profile_input",
-              autofocus: true,
-              autocomplete: "name" %>
-      </div>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-user"></i>
+      <%= f.input :name,
+                  placeholder: "Nom",
+                  label: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" } %>
+    </div>
 
-      <div class="user-profile_group">
-        <%= f.label :email, "Email", class: "user-profile_label" %>
-        <%= f.email_field :email,
-              class: "user-profile_input",
-              autocomplete: "email",
-              required: true %>
-      </div>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-envelope"></i>
+      <%= f.input :email,
+                  placeholder: "Email",
+                  label: false,
+                  required: true,
+                  input_html: { autocomplete: "email" } %>
+    </div>
 
-      <div class="user-profile_group">
-        <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
-        <%= f.input_field :phone_number, class: "user-profile_input", required: true, placeholder: "+33 6 XX XX XX XX" %>
-      </div>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-phone"></i>
+      <%= f.input :phone_number,
+                  placeholder: "Telephone (+33...)",
+                  label: false,
+                  required: true,
+                  input_html: { autocomplete: "tel" } %>
+    </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p class="user-profile_hint">En attente de confirmation pour : <%= resource.unconfirmed_email %></p>
-      <% end %>
-
-      <div class="user-profile_group">
-        <%= f.label :password, "Nouveau mot de passe", class: "user-profile_label" %>
-        <%= f.password_field :password,
-              class: "user-profile_input",
-              autocomplete: "new-password",
-              required: false %>
-        <p class="user-profile_hint">Laisser vide si tu ne veux pas le modifier.</p>
-      </div>
-
-      <div class="user-profile_group">
-        <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe", class: "user-profile_label" %>
-        <%= f.password_field :password_confirmation,
-              class: "user-profile_input",
-              autocomplete: "new-password",
-              required: false %>
-      </div>
-
-      <div class="user-profile_group">
-        <%= f.label :current_password, "Mot de passe actuel", class: "user-profile_label" %>
-        <%= f.password_field :current_password,
-              class: "user-profile_input",
-              autocomplete: "current-password",
-              required: true %>
-        <p class="user-profile_hint">Requis pour valider les modifications.</p>
-      </div>
-
-      <div class="user-profile_actions">
-        <%= f.submit "Mettre à jour le profil", class: "btn btn-success btn-lg return-training-btn" %>
-      </div>
-
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p class="text-muted small">En attente de confirmation pour : <%= resource.unconfirmed_email %></p>
     <% end %>
 
-<div class="user-profile_group d-flex gap-2" style="margin-top: 30px;">
-  <%= link_to "Retour", :back,
-        class: "btn btn-dark flex-grow-1 d-flex align-items-center justify-content-center",
-        style: "min-height: 50px; height: 100%; color: white !important;" %>
-  <%= link_to "Supprimer mon compte",
-        registration_path(resource_name),
-        method: :delete,
-        data: { confirm: "Es-tu sûr ?", turbo_confirm: "Es-tu sûr ?" },
-        class: "btn btn-dark flex-grow-1 d-flex align-items-center justify-content-center",
-        style: "min-height: 50px; height: 100%; color: white;" %>
-</div>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-lock"></i>
+      <%= f.input :password,
+                  placeholder: "Nouveau mot de passe (laisser vide si inchange)",
+                  label: false,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
 
+    <div class="input-icon-wrapper">
+      <i class="fas fa-lock"></i>
+      <%= f.input :password_confirmation,
+                  placeholder: "Confirmer le nouveau mot de passe",
+                  label: false,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+
+    <div class="input-icon-wrapper">
+      <i class="fas fa-key"></i>
+      <%= f.input :current_password,
+                  placeholder: "Mot de passe actuel (requis)",
+                  label: false,
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+    </div>
+
+    <div>
+      <%= f.button :submit, "Mettre a jour", class: "btn-cta" %>
+    </div>
+
+  <% end %>
+
+  <div class="d-flex flex-column align-items-center gap-2 mt-3">
+    <%= link_to "Retour", :back, class: "btn-cta" %>
+    <%= link_to "Supprimer mon compte",
+          registration_path(resource_name),
+          method: :delete,
+          data: { confirm: "Es-tu sur ?", turbo_confirm: "Es-tu sur ?" },
+          class: "btn-cta" %>
+  </div>
 </div>

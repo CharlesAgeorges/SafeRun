@@ -9,11 +9,28 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.card {
+  border: 2px solid $black;
+  border-radius: 5px;
+  border-bottom-right-radius: 44px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  .card-img-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
+
+.card-footer {
+  margin-top: 1rem;
+}
+
 .profile-tabs {
   display: inline-flex;
   background-color: rgba($mystic-red, 0.5);
   border-radius: 999px;
   padding: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
   .nav-item {
     margin: 0;

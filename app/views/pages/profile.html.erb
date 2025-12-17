@@ -30,10 +30,9 @@
 
     <!-- Onglet Runs -->
     <div class="active" data-content="true" id="runs" role="tabpanel" aria-labelledby="runs-tab" data-tabs-target="runs" data-action="click->tabs#toggle">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4>Historique des runs</h4>
-        <%= link_to new_run_path, class: "btn" do %>
-          <i class="fas fa-plus me-2"></i>Nouvelle run
+      <div class="mb-4">
+        <%= link_to new_run_path, class: "btn-new-run" do %>
+          <i class="fas fa-plus"></i>NEW RUN
         <% end %>
       </div>
 
@@ -70,25 +69,25 @@
                 </div>
                 <div class="card-footer bg-transparent">
                   <% if run.status == "planned" %>
-                    <%= link_to run_path(run), class: "btn btn-sm px-3 me-2" do %>
+                    <%= link_to run_path(run), class: "btn-profile-runs me-2" do %>
                     <i class="fa-solid fa-eye"></i>
                     <% end %>
-                    <%= link_to edit_run_path(run), class: "btn btn-sm px-3 me-2" do %>
+                    <%= link_to edit_run_path(run), class: "btn-profile-runs me-2" do %>
                     <i class="fas fa-edit"></i>
                     <% end %>
-                    <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn btn-sm px-3" do %>
+                    <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn-profile-runs" do %>
                       <i class="fas fa-trash"></i>
                     <% end %>
                     <% elsif  run.status == "paused" || run.status == "running" %>
-                    <%= link_to run_path(run), class: "btn" do %>
+                    <%= link_to run_path(run), class: "btn-profile-runs" do %>
                       <i class="fas fa-eye me-1"></i>
                     <% end %>
                   <% end %>
                   <% if run.status.in?(%w[ended]) %>
-                    <%= link_to make_public_run_path(run), data: { turbo_method: :patch }, class: "btn btn-sm px-3" do %>
-                      <i class="fa-solid fa-share"></i>
+                    <%= link_to make_public_run_path(run), data: { turbo_method: :patch }, class: "btn-profile-runs me-2" do %>
+                      <i class="fa-solid fa-shield-heart"></i>
                     <% end %>
-                    <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn btn-sm px-3" do %>
+                    <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn-profile-runs" do %>
                       <i class="fas fa-trash"></i>
                     <% end %>
                   <% end %>

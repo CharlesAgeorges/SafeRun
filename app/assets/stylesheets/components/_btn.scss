@@ -16,3 +16,24 @@
   letter-spacing: -0.5px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
+.btn-new-run {
+  background-color: $mystic-red;
+  color: $black;
+  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-left: 9px;
+  margin-bottom: 1rem;
+}
+
+.btn-profile-runs {
+  background-color: $black;
+  color: $blanc;
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+}

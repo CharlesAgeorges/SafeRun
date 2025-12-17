@@ -1,20 +1,22 @@
 <%= render "shared/navbar" %>
 
 <div class="container py-4 mb-5 pb-4" data-controller="tabs">
-  <h1 class="mb-4">Mes Badges</h1>
+  <h1 class="profile-title">Mes Badges</h1>
 
-  <ul class="nav nav-tabs mb-4" id="badgesTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active police" id="earned-tab" type="button" role="tab" aria-controls="earned" aria-selected="true" data-tabs-target="earned" data-action="click->tabs#toggle">
-        <i class="fas fa-trophy me-2"></i>Badges obtenus
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link police" id="available-tab" type="button" role="tab" aria-controls="available" aria-selected="false" data-tabs-target="available" data-action="click->tabs#toggle">
-        <i class="fas fa-target me-2"></i>Défis à relever
-      </button>
-    </li>
-  </ul>
+  <div class="d-flex justify-content-center mb-4">
+    <ul class="nav profile-tabs" id="badgesTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="earned-tab" type="button" role="tab" aria-controls="earned" aria-selected="true" data-tabs-target="earned" data-action="click->tabs#toggle">
+          <i class="fas fa-trophy me-2"></i>Badges obtenus
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="available-tab" type="button" role="tab" aria-controls="available" aria-selected="false" data-tabs-target="available" data-action="click->tabs#toggle">
+          <i class="fas fa-target me-2"></i>Défis à relever
+        </button>
+      </li>
+    </ul>
+  </div>
 
   <div class="tab-content" id="badgesTabsContent">
 
@@ -23,7 +25,7 @@
         <div class="row">
           <% @earned_badges.each do |badge| %>
             <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 rounded-3">
+              <div class="card h-100">
                 <div class="card-body">
                   <h5 class="card-title">
                     <i class="fas fa-medal me-2 police"></i><%= badge.name %>
@@ -46,18 +48,19 @@
           <% end %>
         </div>
       <% else %>
-        <div class="alert alert-info rounded-4">
+        <div class="alert alert-info">
           <i class="fas fa-info-circle me-2"></i>Vous n'avez pas encore de badges. Complétez des runs pour débloquer vos premiers défis !
         </div>
       <% end %>
     </div>
 
+    <!-- Onglet Défis à relever -->
     <div class="d-none" data-content="true" id="available" role="tabpanel" aria-labelledby="available-tab" data-tabs-target="available" data-action="click->tabs#toggle">
       <% if @available_badges.any? %>
         <div class="row">
           <% @available_badges.each do |badge| %>
             <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100 border-secondary rounded-4">
+              <div class="card h-100 border-secondary">
                 <div class="card-body">
                   <h5 class="card-title text-muted">
                     <i class="fas fa-lock me-2"></i><%= badge.name %>
@@ -74,7 +77,7 @@
           <% end %>
         </div>
       <% else %>
-        <div class="alert alert-success rounded-4">
+        <div class="alert alert-success">
           <i class="fas fa-star me-2"></i>Félicitations ! Vous avez débloqué tous les badges disponibles !
         </div>
       <% end %>

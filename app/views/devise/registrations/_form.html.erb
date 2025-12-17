@@ -1,41 +1,27 @@
-<div class="form_container bg-light-gray" style="height: calc(100% - 100px); margin: 0 auto; padding: 20px; max-width: 420px;">
-
-  <h1 class="text-center">Inscription</h1>
-  <p class="text-center mt-3">Créer ton compte pour rejoindre la communauté SafeRun.</p>
-
+<div class="form_container">
+  <h1>Inscription</h1>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-    <div class="user-profile_group">
-      <%= f.label :name, "Votre nom" %>
-      <%= f.text_field :name, class: "user-profile_input", autofocus: true %>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-user"></i>
+      <%= f.input :name, placeholder: "Nom complet", label: false, input_html: { autocomplete: "name" } %>
     </div>
 
-    <div class="user-profile_group">
-      <%= f.label :email, "Email" %>
-      <%= f.email_field :email, class: "user-profile_input" %>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-envelope"></i>
+      <%= f.input :email, placeholder: "Email", label: false, input_html: { autocomplete: "email" } %>
     </div>
 
-      <div class="user-profile_group">
-        <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
-        <%= f.input_field :phone_number, class: "user-profile_input", required: true, placeholder: "+33 6 XX XX XX XX" %>
-      </div>
-
-    <div class="user-profile_group">
-      <%= f.label :password, "Mot de passe" %>
-      <%= f.password_field :password, class: "user-profile_input" %>
-      <% if @minimum_password_length %>
-        <p class="user-profile_hint"><%= @minimum_password_length %> caractères minimum</p>
-      <% end %>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-phone"></i>
+      <%= f.input :phone_number, placeholder: "Telephone (+33...)", label: false, input_html: { autocomplete: "tel" } %>
     </div>
 
-    <div class="user-profile_group">
-      <%= f.label :password_confirmation, "Confirmation du mot de passe" %>
-      <%= f.password_field :password_confirmation, class: "user-profile_input" %>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-lock"></i>
+      <%= f.input :password, placeholder: "Mot de passe", label: false, input_html: { autocomplete: "new-password" } %>
     </div>
 
-    <div class="user-profile_actions d-flex justify-content-center mt-4">
-      <%= f.submit "S'inscrire", class: "btn btn-success btn-lg return-training-btn" %>
-    </div>
+    <%= f.button :submit, "Continuer", class: "btn-cta" %>
   <% end %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 </div>

@@ -3,93 +3,51 @@
   max-width: 420px;
   margin: 0px auto;
   padding: 25px;
-  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: #8080801a;
 
   h1 {
-  text-align: center;
-  margin-bottom: 25px;
+    text-align: center;
   }
 
-  form > div {
-  margin-bottom: 15px;
+  .btn-cta {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
-.user-profile_label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 5px;
-}
+/* Input wrapper avec icone */
+    .input-icon-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
 
- input[type="text"],
- input[type="number"] {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 15px;
-  box-sizing: border-box;
-}
+    .input-icon-wrapper i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d;
+      font-size: 1rem;
+    }
 
-// div {
-//   margin-bottom: 5px;
-// }
+    .input-icon-wrapper input {
+      width: 100%;
+      padding: 0.875rem 1rem 0.875rem 2.75rem;
+      border-radius: 50px;
+      border: 2px solid #e9ecef;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-color: white;
+    }
 
-input[type="submit"] {
-  background-color: $dark-gray;
-  color: white;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
-  width: 100%;
-}
+    .input-icon-wrapper input::placeholder {
+      color: #adb5bd;
+    }
 
-input[type="submit"]:hover {
-  background-color: $bleu-vert-clair;
-}
-
-a {
-  display: inline-block;
-  margin-top: 15px;
-  color: #2c7be5;
-}
-
-.user-profile_card {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-.user-profile_group {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.user-profile_input {
-  width: 100%;
-  display: block;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-}
-
-.background_container {
-  background-color: $bleu-vert;
-}
-
-/* Titre */
-/* Espacement des blocs du formulaire */
-/* Labels */
-/* Inputs */
-// /* Checkboxes */
-/* Bouton */
-/* Lien retour */
+    .input-icon-wrapper input:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+    }

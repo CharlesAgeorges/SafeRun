@@ -22,7 +22,7 @@ puts "Creating User"
 puts "..."
 
 user = User.create!(email: "test@mail.com") do |user|
-  user.password = "secret"
+  user.password = "Secretrun8"
   user.name = "Steve Morin"
   user.phone_number = "+33642957681"
 end

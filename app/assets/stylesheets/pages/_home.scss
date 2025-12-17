@@ -1,7 +1,9 @@
 // Specific CSS for your home-page
 .home-bg-img {
-  h1 {
-    font-size: 5rem;
-    box-shadow: 1 1 px rgba(0,0,0,0.2);
+  h1, .h1 {
+    font-size: 5.5em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7);
   }
 }

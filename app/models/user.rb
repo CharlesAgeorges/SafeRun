@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  validates :phone_number, presence: true,format: { with: /\A\+?[\d\s-]{10,}\z/, message: "Format Invalide" }
+  validates :phone_number, presence: true,format: { with: /\A\+[1-9]\d{6,14}\z/, message: "Format Invalide" }
 
 
   has_many :runs, dependent: :destroy

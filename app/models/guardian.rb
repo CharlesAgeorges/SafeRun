@@ -5,6 +5,6 @@ class Guardian < ApplicationRecord
 
   validates :name, presence: true
   validates :phone_number, presence: true,
-            format: { with: /\A\+?[\d\s-]{10,}\z/, message: "Format Invalide" },
+            format: { with: /\A\+[1-9]\d{6,14}\z/, message: "Format Invalide" },
             uniqueness: { scope: :user_id, message: "Guardian déjà utilisé pour ce compte" }
 end

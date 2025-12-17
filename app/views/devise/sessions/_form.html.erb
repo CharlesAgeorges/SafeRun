@@ -1,20 +1,29 @@
-<div class="form_container bg-light-gray" style="min-height: 50vh; margin: 20px auto; max-width: 420px;">
-  <h2 class="text-center">Log in</h2>
+<div class="form_container" >
+  <h1>Log in</h1>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
+
+    <div class="input-icon-wrapper">
+      <i class="fas fa-envelope"></i>
       <%= f.input :email,
+                  placeholder: "Email",
+                  label: false,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
+    </div>
 
+    <div class="input-icon-wrapper">
+      <i class="fas fa-lock"></i>
       <%= f.input :password,
+                  placeholder: "Mot de passe",
+                  label: false,
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
     </div>
 
-    <div class="form-actions mt-3">
-      <%= f.button :submit, "Se connecter", class: "btn btn-primary w-100" %>
+    <div>
+      <%= f.button :submit, "Se connecter", class: "btn-cta" %>
     </div>
   <% end %>
 </div>

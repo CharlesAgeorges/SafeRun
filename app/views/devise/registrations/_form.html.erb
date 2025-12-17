@@ -16,6 +16,11 @@
       <%= f.email_field :email, class: "user-profile_input" %>
     </div>
 
+      <div class="user-profile_group">
+        <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
+        <%= f.input_field :phone_number, class: "user-profile_input", required: true, placeholder: "+33 6 XX XX XX XX" %>
+      </div>
+
     <div class="user-profile_group">
       <%= f.label :password, "Mot de passe" %>
       <%= f.password_field :password, class: "user-profile_input" %>

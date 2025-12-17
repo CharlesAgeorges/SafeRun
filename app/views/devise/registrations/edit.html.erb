@@ -26,6 +26,11 @@
               required: true %>
       </div>
 
+      <div class="user-profile_group">
+        <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
+        <%= f.input_field :phone_number, class: "user-profile_input", required: true, placeholder: "+33 6 XX XX XX XX" %>
+      </div>
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p class="user-profile_hint">En attente de confirmation pour : <%= resource.unconfirmed_email %></p>
       <% end %>

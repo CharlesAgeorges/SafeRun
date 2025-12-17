@@ -1,21 +1,27 @@
-<div class="form_container bg-light-gray" style="background: white; min-height: calc(100vh - 56px); margin: 0 auto; padding: 40px 20px; max-width: 500px;">
+<div class="form_container">
 
-   <div><h1>Nouveau Guardian</h1></div>
+  <h1>Nouveau Guardian</h1>
 
   <%= simple_form_for(guardian) do |f| %>
 
-    <div class="user-profile_group">
-      <%= f.label :name, "Nom", class: "user-profile_label" %>
-      <%= f.input_field :name, class: "user-profile_input", required: true %>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-user"></i>
+      <%= f.input :name,
+                  placeholder: "Nom",
+                  label: false,
+                  required: true %>
     </div>
 
-    <div class="user-profile_group">
-      <%= f.label :phone, "Numéro de téléphone", class: "user-profile_label" %>
-      <%= f.input_field :phone_number, class: "user-profile_input", required: true, placeholder: "+33 6 XX XX XX XX" %>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-phone"></i>
+      <%= f.input :phone_number,
+                  placeholder: "Téléphone (+33...)",
+                  label: false,
+                  required: true %>
     </div>
 
-    <div class="user-profile_actions">
-     <%= f.submit "Enregistrer", class: "btn" %>
+    <div>
+      <%= f.button :submit, "Enregistrer", class: "btn-cta" %>
     </div>
 
   <% end %>

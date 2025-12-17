@@ -1,41 +1,46 @@
-  <div class="form_container bg-light-gray" style="min-height: 80vh; margin: 10px auto; max-width: 420px;">
+<div class="form_container">
+  <h1>Nouvelle course</h1>
 
-    <div><h1>Nouvelle course</h1></div>
+  <%= simple_form_for @run do |f| %>
 
-    <%= form_with model: @run do |f| %>
+    <div class="mb-3">
+      <p class="mb-2"><strong>Guardians a notifier</strong></p>
+      <%= f.collection_check_boxes :guardian_ids, @guardians, :id, :name do |b| %>
+        <div class="form-check">
+          <%= b.check_box class: "form-check-input" %>
+          <i class="fa-solid fa-user-shield me-1"></i>
+          <%= b.label class: "form-check-label" %>
+        </div>
+      <% end %>
+    </div>
 
-      <div>
-        <%= f.label :guardian_ids, "Sélectionner les guardians à notifier" %>
-        <%= f.collection_check_boxes :guardian_ids, @guardians, :id, :name do |b| %>
-          <div>
-            <%= b.check_box %>
-            <i class="fa-solid fa-user-shield"></i>
-            <%= b.label %>
-          </div>
-        <% end %>
-      </div>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-clock"></i>
+      <%= f.input :duration,
+                  placeholder: "Duree (minutes)",
+                  label: false,
+                  input_html: { min: 1 } %>
+    </div>
 
-      <div>
-        <%= f.label :duration, "Durée (minutes)" %>
-        <%= f.number_field :duration, min: 1 %>
-      </div>
+    <div class="input-icon-wrapper">
+      <i class="fas fa-route"></i>
+      <%= f.input :distance,
+                  placeholder: "Distance (km)",
+                  label: false,
+                  input_html: { step: 0.1, min: 0 } %>
+    </div>
 
-      <div>
-        <%= f.label :distance, "Distance (km)" %>
-        <%= f.number_field :distance, step: 0.1, min: 0 %>
-      </div>
+    <div class="input-icon-wrapper" data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX'] %>">
+      <i class="fas fa-map-marker-alt"></i>
+      <%= f.input :start_point,
+                  placeholder: "Point de depart",
+                  label: false,
+                  input_html: { data: { address_autocomplete_target: "input" } } %>
+    </div>
 
-      <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX'] %>" style="position: relative;">
-        <%= f.label :start_point, "Point de départ" %>
-        <%= f.text_field :start_point, data: { address_autocomplete_target: "input" }, placeholder: "Rechercher une adresse..." %>
-      </div>
+    <div>
+      <%= f.button :submit, "Planifier la course", class: "btn-cta" %>
+    </div>
 
-      <div>
-        <%= f.submit "Planifier la course" %>
-      </div>
-
-    <% end %>
-
-      <div>
-  </div>
+  <% end %>
 </div>

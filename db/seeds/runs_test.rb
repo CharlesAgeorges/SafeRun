@@ -178,7 +178,7 @@ positions = [
   [47.4897, 3.9076]
 ]
 
-positions.each { |lat, lng| run.positions.create!(latitude: lat, longitude: lng) }
+positions.each { |lat, lng| avallon_run.positions.create!(latitude: lat, longitude: lng) }
 
-puts "Run ##{run.id} créé avec #{positions.length} positions"
-puts "URL: /runs/#{run.id}"
+puts "Run ##{avallon_run.id} créé avec #{positions.length} positions"
+puts "URL: /runs/#{avallon_run.id}"

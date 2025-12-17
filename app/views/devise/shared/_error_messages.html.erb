@@ -1,5 +1,7 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background: #dc3545; color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.5); max-width: 90%; text-align: center;">
+  <div id="error_explanation"
+       data-turbo-cache="false"
+       style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background: #dc3545; color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(220, 53, 69, 0.5); max-width: 90%; text-align: center; transition: opacity 0.3s ease;">
     <h2>
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
@@ -11,5 +13,10 @@
         <li><%= message %></li>
       <% end %>
     </ul>
+    <button type="button"
+            onclick="this.parentElement.style.opacity='0'; setTimeout(() => this.parentElement.remove(), 300)"
+            style="margin-top: 15px; padding: 10px 20px; background: white; color: #dc3545; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+      Compris !
+    </button>
   </div>
 <% end %>

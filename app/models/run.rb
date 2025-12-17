@@ -25,9 +25,6 @@ class Run < ApplicationRecord
   # Vérifie si la run est publique (donc finie)
   scope :safe_run, -> {where(status: "ended", public: true)}
 
-  # Attribution automatique des badges quand le run se termine a checker !
-  after_update :award_badges_if_ended
-
   def real_duration
     return nil unless started_at && ended_at
     (ended_at - started_at).to_i - (paused_duration || 0)
@@ -98,9 +95,5 @@ class Run < ApplicationRecord
 
     step = (coords.length - 1).to_f / (max_points - 1)
     (0...max_points).map { |i| coords[(i * step).round] }
-  end
-
-  def award_badges_if_ended
-    BadgeAwardService.new(self).award_badges if saved_change_to_status? && status == "ended"
   end
 end

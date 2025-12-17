@@ -34,15 +34,15 @@ class BadgeAwardService
     when "Long Runner Bronze"
       @run.distance >= 12
     when "Sprinteur 5K Bronze"
-      @run.distance >= 5 && @run.duration <= 1800
+      @run.distance >= 5 && run_duration <= 1800
     when "Sprinteur 10K Bronze"
-      @run.distance >= 10 && @run.duration <= 3600
+      @run.distance >= 10 && run_duration <= 3600
     when "Kilomètre Express"
       best_km_time <= 300
 
     # Badges de durée
     when "Endurant Bronze"
-      @run.duration >= 3600
+      run_duration >= 3600
 
     # Badges de vitesse
     when "Rapide Bronze"
@@ -81,22 +81,27 @@ class BadgeAwardService
     else
       false
     end
-  rescue => e # MADE BY CLAUDE ?????
+  rescue => e
     Rails.logger.error "Erreur lors de la vérification du badge '#{badge.name}': #{e.message}"
     false
   end
 
-  # Méthodes helpers pour calculs MODIFY BY CLAUDE
+  # Méthodes helpers pour calculs
+
+  def run_duration
+    # Utilise la durée réelle si disponible, sinon la durée planifiée
+    @run.real_duration || @run.duration
+  end
 
   def average_speed
-    return 0 if @run.duration.zero?
-    (@run.distance / @run.duration) * 3600 # km/h
+    return 0 if run_duration.zero?
+    (@run.distance / run_duration) * 3600 # km/h
   end
 
   def best_km_time
     # Approximation : temps moyen par km
     return Float::INFINITY if @run.distance.zero?
-    @run.duration / @run.distance
+    run_duration / @run.distance
   end
 
   def runs_in_same_week
@@ -104,7 +109,7 @@ class BadgeAwardService
 
     week_start = @run.started_at.beginning_of_week
     week_end = @run.started_at.end_of_week
-    # en dessous = CLAUDE
+
     @user.runs.where(status: "ended")
          .where(started_at: week_start..week_end)
          .count
@@ -127,9 +132,11 @@ class BadgeAwardService
     week_start = @run.started_at.beginning_of_week
     week_end = @run.started_at.end_of_week
 
+    # Somme des durées réelles des runs de la semaine
     @user.runs.where(status: "ended")
          .where(started_at: week_start..week_end)
-         .sum(:duration)
+         .select { |run| run.real_duration.present? }
+         .sum { |run| run.real_duration }
   end
 
   def urban_location?

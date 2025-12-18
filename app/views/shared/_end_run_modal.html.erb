@@ -1,0 +1,21 @@
+<div class="modal fade" id="endRunModal" tabindex="-1" aria-labelledby="endRunModalLabel" aria-hidden="true" data-controller="end-run-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title w-100 text-center" id="endRunModalLabel">
+          <i class="fa-solid fa-flag-checkered me-2 mystic-red"></i>Terminer la run<i class="fa-solid fa-flag-checkered ms-2 mystic-red"></i>
+        </h5>
+        <button type="button" class="btn-close position-absolute" style="top: 10px; right: 10px;" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="mb-4">Es-tu sûr de vouloir terminer ta run ?</p>
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn rounded-3" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;" data-bs-dismiss="modal">Continuer</button>
+        <a href="#" class="btn rounded-3" style="background-color: #000000; color: #ffffff;" data-turbo-method="patch" data-end-run-modal-target="confirmBtn">
+          Terminer <i class="fas fa-thumbs-up ms-1 mystic-red"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="modal fade" id="makePublicModal" tabindex="-1" aria-labelledby="makePublicModalLabel" aria-hidden="true" data-controller="make-public-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title w-100 text-center" id="makePublicModalLabel">
+          <i class="fas fa-star me-2 text-warning"></i>Fais partie des éclaireurs SafeRun !
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="mb-4">Partage ton trajet afin de contribuer à créer des parcours sécurisés pour toute la communauté.</p>
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn rounded-3" style="background-color: #ffffff; color: #000000; border: 1px solid #000000;" data-bs-dismiss="modal">Pas maintenant</button>
+        <a href="#" class="btn rounded-3" style="background-color: #000000; color: #ffffff;" data-turbo-method="patch" data-make-public-modal-target="confirmBtn">
+          Je partage ! <i class="fas fa-hand-rock ms-1 orange"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -167,53 +167,25 @@
 
       <div class="card">
         <div class="card-body text-black">
-          <div class="row mb-3">
-            <div class="col-sm-4 fw-bold">
-              <i class="fas fa-user me-2 mystic-red"></i>Nom
-            </div>
-            <div class="col-sm-8">
-              <%= @user.name || "Non renseigne" %>
-            </div>
+          <div class="mb-3">
+            <i class="fas fa-user me-2 mystic-red"></i><%= @user.name || "Non renseigné" %>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-sm-4 fw-bold">
-              <i class="fas fa-envelope me-2 mystic-red"></i>Email
-            </div>
-            <div class="col-sm-8">
-              <%= @user.email %>
-            </div>
+          <div class="mb-3">
+            <i class="fas fa-envelope me-2 mystic-red"></i><%= @user.email %>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-sm-4 fw-bold">
-              <i class="fas fa-phone me-2 mystic-red"></i>Telephone
-            </div>
-            <div class="col-sm-8">
-              <%= @user.phone_number || "Non renseigne" %>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-sm-4 fw-bold">
-              <i class="fas fa-calendar me-2 mystic-red"></i>Membre depuis
-            </div>
-            <div class="col-sm-8">
-              <%= @user.created_at.strftime("%d/%m/%Y") %>
-            </div>
+          <div class="mb-3">
+            <i class="fas fa-phone me-2 mystic-red"></i><%= @user.phone_number || "Non renseigné" %>
           </div>
 
           <hr>
 
-          <div class="row">
-            <div class="col-sm-4 fw-bold">
-              <i class="fas fa-chart-bar me-2 mystic-red"></i>Statistiques
-            </div>
-            <div class="col-sm-8">
-              <span class="me-2"><%= @runs.count %> runs</span>
-              <span class="me-2"><%= @badges.count %> badges</span>
-              <span><%= @guardians.count %> guardians</span>
-            </div>
+          <div>
+            <i class="fas fa-chart-bar me-2 mystic-red"></i>
+            <span class="me-2"><%= @runs.count %> runs</span>
+            <span class="me-2"><%= @badges.count %> badges</span>
+            <span><%= @guardians.count %> gardiens</span>
           </div>
         </div>
 

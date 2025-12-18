@@ -1,4 +1,5 @@
 <%= render "shared/incident_alert_modal" %>
+<%= render "shared/end_run_modal" %>
 <div class="run-page">
   <div id="map"
        data-controller="map"
@@ -48,9 +49,9 @@
       <% end %>
 
       <% if @run.status.in?(%w[running paused]) %>
-        <%= link_to end_run_path(@run), class: "run-btn run-btn--stop", data: { turbo_method: :patch, turbo_confirm: "Es-tu sûr de vouloir terminer ta run ?" } do %>
+        <button type="button" class="run-btn run-btn--stop" data-bs-toggle="modal" data-bs-target="#endRunModal" data-end-run-url="<%= end_run_path(@run) %>">
           <i class="fa-solid fa-stop"></i>
-        <% end %>
+        </button>
       <% end %>
       <button type="button" class="run-btn run-btn--alert" data-bs-toggle="modal" data-bs-target="#incidentAlertModal" data-incident-alert-url="<%= incident_alert_run_path(@run) %>">
         <i class="fa-solid fa-triangle-exclamation"></i>

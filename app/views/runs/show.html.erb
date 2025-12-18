@@ -10,7 +10,7 @@
 
   <div class="run-info">
     <strong><%= @run.start_point %></strong>
-    <div><i class="fa-solid fa-user-shield"></i> <%= @run.guardians.map(&:name).join(', ').presence || 'Aucun guardian' %></div>
+    <div><i class="fa-solid fa-user-shield"></i> <%= @run.guardians.map(&:name).join(', ').presence || 'Aucun gardien' %></div>
   </div>
 
   <% if @run.status.in?(%w[running paused]) %>

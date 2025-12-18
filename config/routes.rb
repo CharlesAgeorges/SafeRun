@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   
-  resources :public_runs, only: [:index, :show], path: 'explore'
+  resources :public_runs, only: [:index, :show, :destroy], path: 'explore'
   resources :guardians, except: [:index, :show]
   resources :runs, except: [:index] do
       member do

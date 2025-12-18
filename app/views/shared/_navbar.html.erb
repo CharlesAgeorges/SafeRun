@@ -21,10 +21,7 @@
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
         <% end %>
     <% else %>
-        <%= link_to new_user_session_path do%>
-          Log in
-          <i class="fa-solid fa-arrow-right-to-bracket"></i>
-        <% end %>
+        <%= link_to "Se connecter", new_user_session_path, class: "blanc" %>
     <% end %>
   </div>
 </nav>

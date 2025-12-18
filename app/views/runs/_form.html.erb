@@ -1,22 +1,22 @@
-<div class="form_container">
+<div class="form_container text-black">
 
   <h1>Nouvelle course</h1>
 
   <%= simple_form_for @run do |f| %>
 
     <div class="mb-3">
-      <p class="mb-2"><strong>Guardians à notifier</strong></p>
+      <p class="mb-2"><strong>Guardiens à notifier</strong></p>
       <%= f.collection_check_boxes :guardian_ids, @guardians, :id, :name do |b| %>
         <div class="form-check">
           <%= b.check_box class: "form-check-input" %>
-          <i class="fa-solid fa-user-shield me-1"></i>
+          <i class="fa-solid fa-user-shield me-1 mystic-red"></i>
           <%= b.label class: "form-check-label" %>
         </div>
       <% end %>
     </div>
 
     <div class="input-icon-wrapper">
-      <i class="fas fa-clock"></i>
+      <i class="fas fa-clock mystic-red"></i>
       <%= f.input :duration,
                   placeholder: "Duree (minutes)",
                   label: false,
@@ -24,7 +24,7 @@
     </div>
 
     <div class="input-icon-wrapper">
-      <i class="fas fa-route"></i>
+      <i class="fas fa-route mystic-red"></i>
       <%= f.input :distance,
                   placeholder: "Distance (km)",
                   label: false,
@@ -32,7 +32,7 @@
     </div>
 
     <div class="input-icon-wrapper" data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX'] %>">
-      <i class="fas fa-map-marker-alt"></i>
+      <i class="fas fa-map-marker-alt mystic-red"></i>
       <%= f.input :start_point,
                   placeholder: "Point de depart",
                   label: false,

@@ -26,11 +26,11 @@
           <% @earned_badges.each do |badge| %>
             <div class="col-6 col-md-6 col-lg-4 mb-3">
               <div class="card h-100">
-                <div class="card-body">
+                <div class="card-body text-black">
                   <h5 class="card-title">
-                    <i class="fas fa-medal me-2 police"></i><%= badge.name %>
+                    <i class="fas fa-medal me-2 mystic-red"></i><%= badge.name %>
                   </h5>
-                  <p class="card-text text-muted">
+                  <p class="card-text">
                     <%= badge.description %>
                   </p>
                   <% if badge.respond_to?(:runs_count) && badge.runs_count > 1 %>
@@ -61,9 +61,9 @@
           <% @available_badges.each do |badge| %>
             <div class="col-6 col-md-6 col-lg-4 mb-3">
               <div class="card h-100 border-secondary">
-                <div class="card-body">
-                  <h5 class="card-title text-muted">
-                    <i class="fas fa-lock me-2"></i><%= badge.name %>
+                <div class="card-body text-muted">
+                  <h5 class="card-title">
+                    <i class="fas fa-lock me-2 mystic-red"></i><%= badge.name %>
                   </h5>
                   <p class="card-text">
                     <%= badge.description %>

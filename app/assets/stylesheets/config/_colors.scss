@@ -28,6 +28,10 @@ $black: #000000;
   background-color:$dark-gray !important;
 }
 
+.bg-black {
+  background-color:$black !important;
+}
+
 // polices colors
 .green {
   color: $green !important;
@@ -41,6 +45,9 @@ $black: #000000;
   color: $orange !important;
 }
 
+.mystic {
+  color: $mystic-red !important;
+}
 
 .info-gray {
   color: $info-gray !important;

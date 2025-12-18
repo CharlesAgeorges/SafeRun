@@ -49,8 +49,13 @@
               </div>
             </div>
             <div class="card-footer bg-transparent">
-              <%= link_to public_run_path(run), class: "btn-profile-runs" do %>
+              <%= link_to public_run_path(run), class: "btn-profile-runs me-2" do %>
                 <i class="fa-solid fa-eye"></i>
+              <% end %>
+              <% if user_signed_in? && run.user == current_user %>
+                <%= link_to public_run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn-profile-runs" do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
               <% end %>
             </div>
           </div>

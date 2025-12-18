@@ -56,7 +56,20 @@
                       when "running" then "bg-black mystic"
                       when "paused" then "bg-black mystic"
                     end %>
-                    <span class="fs-6 fw-normal p-1 <%= status_class %>" style="border-radius: 4px"><%= run.status.capitalize %></span>
+                    <span class="fs-6 fw-normal p-1 <%= status_class %>" style="border-radius: 4px">
+                      <% if run.status == "ended" %>
+                        <%= "Terminée" %>
+                      <% end %>
+                      <% if run.status == "planned" %>
+                        <%= "Prévue" %>
+                      <% end %>
+                      <% if run.status == "paused" %>
+                        <%= "En pause" %>
+                      <% end %>
+                      <% if run.status == "running" %>
+                        <%= "En cours" %>
+                      <% end %>
+                      </span>
                   </div>
                   <div class="d-flex gap-3 mt-2">
                     <span><i class="fas fa-route me-1"></i><%= number_with_precision(run.distance, precision: 2) %> km</span>

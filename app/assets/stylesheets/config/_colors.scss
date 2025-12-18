@@ -33,6 +33,10 @@ $black: #000000;
 }
 
 // polices colors
+.black {
+  color: $black !important;
+}
+
 .green {
   color: $green !important;
 }

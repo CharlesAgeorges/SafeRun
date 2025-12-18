@@ -1,5 +1,6 @@
 <%= render "shared/navbar" %>
 <%= render "shared/badges_modal" %>
+<%= render "shared/make_public_modal" %>
 
 <div class="container py-4 mb-5 pb-4" data-controller="tabs">
   <h1 class="profile-title">Mon Profil</h1>
@@ -97,9 +98,9 @@
                     <% end %>
                   <% end %>
                   <% if run.status.in?(%w[ended]) %>
-                    <%= link_to make_public_run_path(run), data: { turbo_method: :patch }, class: "btn-profile-runs me-2" do %>
+                    <button type="button" class="btn-profile-runs me-2" data-bs-toggle="modal" data-bs-target="#makePublicModal" data-make-public-url="<%= make_public_run_path(run) %>">
                       <i class="fa-solid fa-shield-heart"></i>
-                    <% end %>
+                    </button>
                     <%= link_to run_path(run), data: { turbo_method: :delete, turbo_confirm: "Supprimer cette run ?" }, class: "btn-profile-runs" do %>
                       <i class="fas fa-trash"></i>
                     <% end %>

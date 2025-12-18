@@ -13,7 +13,7 @@ class PublicRunsController < ApplicationController
   end
 
   def destroy
-    @run = current_user.runs.find(params[:id])
+    @run = Run.find(params[:id])
     @run.destroy
     redirect_to public_runs_path, notice: "Run supprimée"
   end

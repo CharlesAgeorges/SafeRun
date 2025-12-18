@@ -1,10 +1,10 @@
 class TwilioService
   def initialize
     @client = Twilio::REST::Client.new(
-      ENV['TWILIO_ACCOUNT_SID'],
-      ENV['TWILIO_AUTH_TOKEN']
+      ENV.fetch('TWILIO_ACCOUNT_SID', nil),
+      ENV.fetch('TWILIO_AUTH_TOKEN', nil)
     )
-    @from = ENV['TWILIO_PHONE_NUMBER']
+    @from = ENV.fetch('TWILIO_PHONE_NUMBER', nil)
   end
 
   def send_sms(to:, body:)
@@ -28,7 +28,7 @@ class TwilioService
     run.guardians.each do |guardian|
       send_sms(
         to: guardian.phone_number,
-        body: "✅ #{user.name} a terminé sa run !\n\n📍 #{run.start_point}\n\nMerci d'avoir été son Guardian Angel 🛡️"
+        body: "✅ #{user.name} a terminé sa run !\n\n📍 #{run.start_point}\n\nMerci d'avoir été son Ange Guardien 🛡️"
       )
     end
   end

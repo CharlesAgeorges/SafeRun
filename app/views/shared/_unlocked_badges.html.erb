@@ -1,0 +1,25 @@
+<% @earned_badges.each do |badge| %>
+  <div class="col-6 col-md-6 col-lg-4 mb-3">
+    <div class="card h-100">
+      <div class="card-body text-black d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">
+            <i class="fas fa-medal me-2 mystic-red"></i><%= badge.name %>
+          </h5>
+          <p class="card-text text-muted">
+            <%= badge.description %>
+          </p>
+        </div>
+        <% if badge.respond_to?(:runs_count) && badge.runs_count > 1 %>
+          <small class="text-success">
+            <i class="fas fa-check-circle me-1"></i>Obtenu <%= badge.runs_count %> fois
+          </small>
+        <% else %>
+          <small class="black">
+            <i class="fas fa-check-circle me-1 mystic"></i>Défi réussi !
+          </small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

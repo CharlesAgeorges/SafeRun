@@ -1,0 +1,20 @@
+
+<% @available_badges.each do |badge| %>
+  <div class="col-6 col-md-6 col-lg-4 mb-3">
+    <div class="card h-100 border-secondary">
+      <div class="card-body text-muted d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">
+            <i class="fas fa-lock me-2 mystic-red"></i><%= badge.name %>
+          </h5>
+          <p class="card-text">
+            <%= badge.description %>
+          </p>
+        </div>
+        <small class="text-muted">
+          <i class="fas fa-flag-checkered me-1"></i>À débloquer
+        </small>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,3 +1,4 @@
+<%= render "shared/incident_alert_modal" %>
 <div class="run-page">
   <div id="map"
        data-controller="map"
@@ -51,9 +52,9 @@
           <i class="fa-solid fa-stop"></i>
         <% end %>
       <% end %>
-      <%= link_to incident_alert_run_path(@run), class: "run-btn run-btn--alert", data: { turbo_method: :post } do %>
+      <button type="button" class="run-btn run-btn--alert" data-bs-toggle="modal" data-bs-target="#incidentAlertModal" data-incident-alert-url="<%= incident_alert_run_path(@run) %>">
         <i class="fa-solid fa-triangle-exclamation"></i>
-      <% end %>
+      </button>
     </div>
     <% end %>
 </div>

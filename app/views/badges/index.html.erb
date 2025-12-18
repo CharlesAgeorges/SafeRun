@@ -23,29 +23,7 @@
     <div class="active" data-content="true" id="earned" role="tabpanel" aria-labelledby="earned-tab" data-tabs-target="earned" data-action="click->tabs#toggle">
       <% if @earned_badges.any? %>
         <div class="row">
-          <% @earned_badges.each do |badge| %>
-            <div class="col-6 col-md-6 col-lg-4 mb-3">
-              <div class="card h-100">
-                <div class="card-body text-black">
-                  <h5 class="card-title">
-                    <i class="fas fa-medal me-2 mystic-red"></i><%= badge.name %>
-                  </h5>
-                  <p class="card-text">
-                    <%= badge.description %>
-                  </p>
-                  <% if badge.respond_to?(:runs_count) && badge.runs_count > 1 %>
-                    <small class="text-success">
-                      <i class="fas fa-check-circle me-1"></i>Obtenu <%= badge.runs_count %> fois
-                    </small>
-                  <% else %>
-                    <small class="black">
-                      <i class="fas fa-check-circle me-1 mystic"></i>Défi réussi !
-                    </small>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render "shared/unlocked_badges" %>
         </div>
       <% else %>
         <%# <div class="alert alert-info rounded-4">

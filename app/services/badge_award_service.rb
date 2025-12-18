@@ -33,9 +33,9 @@ class BadgeAwardService
       @run.distance >= 20
     when "Long Runner Bronze"
       @run.distance >= 12
-    when "Sprinteur 5K Bronze"
+    when "Sprinteur 5KM Bronze"
       @run.distance >= 5 && run_duration <= 1800
-    when "Sprinteur 10K Bronze"
+    when "Sprinteur 10KM Bronze"
       @run.distance >= 10 && run_duration <= 3600
     when "Kilomètre Express"
       best_km_time <= 300
@@ -49,15 +49,15 @@ class BadgeAwardService
       average_speed >= 10
 
     # Badges horaires
-    when "Morning Runner"
+    when "Runner du matin"
       @run.started_at.present? && @run.started_at.hour < 7
-    when "Night Performer", "Night Owl"
+    when "Performeur de nuit", "Hibou de Nuit"
       @run.started_at.present? && @run.started_at.hour >= 22
-    when "Midday Runner"
+    when "Runner du midi"
       @run.started_at.present? && @run.started_at.hour.between?(12, 14)
 
     # Badges hebdomadaires
-    when "Weekend Warrior"
+    when "Guerrier du Week-End"
       @run.started_at.present? && @run.started_at.wday.in?([0, 6]) # 0=dimanche, 6=samedi
 
     # Badges de régularité (basés sur l'historique utilisateur)
@@ -65,13 +65,13 @@ class BadgeAwardService
       runs_in_same_week >= 3
     when "Double Effort"
       runs_same_day >= 2
-    when "Marathon Training Starter"
+    when "Entraînement Marathon"
       weekly_duration >= 14400 # 4 heures en secondes
 
     # Badges de localisation
-    when "Urban Runner"
+    when "Runner Urbain"
       urban_location?
-    when "Globe Runner"
+    when "Runner du monde"
       unique_cities >= 3
 
     # Badges de dénivelé (nécessite un champ elevation_gain)

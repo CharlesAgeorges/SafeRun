@@ -22,7 +22,7 @@
 
     <div class="active" data-content="true" id="earned" role="tabpanel" aria-labelledby="earned-tab" data-tabs-target="earned" data-action="click->tabs#toggle">
       <% if @earned_badges.any? %>
-        <div class="row">
+        <div class="row" style="row-gap: 16px;">
           <%= render "shared/unlocked_badges" %>
         </div>
       <% else %>
@@ -35,7 +35,7 @@
     <!-- Onglet Défis à relever -->
     <div class="d-none" data-content="true" id="available" role="tabpanel" aria-labelledby="available-tab" data-tabs-target="available" data-action="click->tabs#toggle">
       <% if @available_badges.any? %>
-        <div class="row">
+        <div class="row" style="row-gap: 16px">
           <%= render "shared/locked_badges" %>
         </div>
       <% else %>

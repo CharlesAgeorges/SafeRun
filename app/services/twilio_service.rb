@@ -28,7 +28,7 @@ class TwilioService
     run.guardians.each do |guardian|
       send_sms(
         to: guardian.phone_number,
-        body: "✅ #{user.name} a terminé sa run !\n\n📍 #{run.start_point}\n\nMerci d'avoir été son Ange Guardien 🛡️"
+        body: "✅ #{user.name} a terminé sa run !\n\n📍 #{run.start_point}\n\nMerci d'avoir été son Ange Gardien 🛡️"
       )
     end
   end

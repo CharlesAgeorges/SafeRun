@@ -15,7 +15,11 @@
             <div class="card-body text-black">
               <div class="d-flex justify-content-between align-items-start">
                 <div>
-                  <h6 class="card-title mb-1"><%= run.start_point %></h6>
+                  <h6 class="card-title mb-1">
+                    <% address_parts = run.start_point.to_s.split(',', 2) %>
+                    <%= address_parts[0]&.strip %><br>
+                    <span class="fw-normal"><%= address_parts[1]&.strip %></span>
+                  </h6>
                   <small><%= run.created_at.strftime("%d/%m/%Y") %></small>
                 </div>
                 <% status_class = case run.status

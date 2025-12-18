@@ -1,47 +1,50 @@
-<div class="form_container">
+<div class="form_wrapper">
+  <div class="form_container text-black">
 
-  <h1>Nouvelle course</h1>
+    <h1>Nouvelle course</h1>
 
-  <%= simple_form_for @run do |f| %>
+    <%= simple_form_for @run do |f| %>
 
-    <div class="mb-3">
-      <p class="mb-2"><strong>Guardians à notifier</strong></p>
-      <%= f.collection_check_boxes :guardian_ids, @guardians, :id, :name do |b| %>
-        <div class="form-check">
-          <%= b.check_box class: "form-check-input" %>
-          <i class="fa-solid fa-user-shield me-1"></i>
-          <%= b.label class: "form-check-label" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="mb-3">
+        <p class="mb-2"><strong>Guardiens à notifier</strong></p>
+        <%= f.collection_check_boxes :guardian_ids, @guardians, :id, :name do |b| %>
+          <div class="form-check">
+            <%= b.check_box class: "form-check-input" %>
+            <i class="fa-solid fa-user-shield me-1 mystic-red"></i>
+            <%= b.label class: "form-check-label" %>
+          </div>
+        <% end %>
+      </div>
 
-    <div class="input-icon-wrapper">
-      <i class="fas fa-clock"></i>
-      <%= f.input :duration,
-                  placeholder: "Duree (minutes)",
-                  label: false,
-                  input_html: { min: 1 } %>
-    </div>
+      <div class="input-icon-wrapper">
+        <i class="fas fa-clock mystic-red"></i>
+        <%= f.input :duration,
+                    placeholder: "Duree (minutes)",
+                    label: false,
+                    input_html: { min: 1 } %>
+      </div>
 
-    <div class="input-icon-wrapper">
-      <i class="fas fa-route"></i>
-      <%= f.input :distance,
-                  placeholder: "Distance (km)",
-                  label: false,
-                  input_html: { step: 0.1, min: 0 } %>
-    </div>
+      <div class="input-icon-wrapper">
+        <i class="fas fa-route mystic-red"></i>
+        <%= f.input :distance,
+                    placeholder: "Distance (km)",
+                    label: false,
+                    input_html: { step: 0.1, min: 0 } %>
+      </div>
 
-    <div class="input-icon-wrapper" data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX'] %>">
-      <i class="fas fa-map-marker-alt"></i>
-      <%= f.input :start_point,
-                  placeholder: "Point de depart",
-                  label: false,
-                  input_html: { data: { address_autocomplete_target: "input" } } %>
-    </div>
+      <div class="input-icon-wrapper" data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV['MAPBOX'] %>">
+        <i class="fas fa-map-marker-alt mystic-red"></i>
+        <%= f.input :start_point,
+                    placeholder: "Point de depart",
+                    label: false,
+                    input_html: { data: { address_autocomplete_target: "input" } } %>
+      </div>
 
-    <div>
-      <%= f.button :submit, "Planifier la course", class: "btn-cta" %>
-    </div>
+      <div>
+        <%= f.button :submit, "Planifier la course", class: "btn-cta" %>
+      </div>
 
-  <% end %>
+    <% end %>
+  </div>
+
 </div>

@@ -1,11 +1,11 @@
 <div class="form_container">
 
-  <h1>Nouveau Guardian</h1>
+  <h1>Nouveau Guardien</h1>
 
   <%= simple_form_for(guardian) do |f| %>
 
     <div class="input-icon-wrapper">
-      <i class="fas fa-user"></i>
+      <i class="fas fa-user mystic-red"></i>
       <%= f.input :name,
                   placeholder: "Nom",
                   label: false,
@@ -13,7 +13,7 @@
     </div>
 
     <div class="input-icon-wrapper">
-      <i class="fas fa-phone"></i>
+      <i class="fas fa-phone mystic-red"></i>
       <%= f.input :phone_number,
                   placeholder: "Téléphone (+33...)",
                   label: false,

@@ -11,4 +11,10 @@ class PublicRunsController < ApplicationController
       @run = Run.safe_run.find(params[:id])
     end
   end
+
+  def destroy
+    @run = Run.find(params[:id])
+    @run.destroy
+    redirect_to public_runs_path, notice: "Run supprimée"
+  end
 end

@@ -28,7 +28,15 @@ $black: #000000;
   background-color:$dark-gray !important;
 }
 
+.bg-black {
+  background-color:$black !important;
+}
+
 // polices colors
+.black {
+  color: $black !important;
+}
+
 .green {
   color: $green !important;
 }
@@ -45,6 +53,9 @@ $black: #000000;
   color: $mystic-red !important;
 }
 
+.mystic {
+  color: $mystic-red !important;
+}
 
 .info-gray {
   color: $info-gray !important;
@@ -59,6 +70,10 @@ $black: #000000;
 
 .blanc {
   color: $blanc !important;
+}
+
+.mystic-red {
+  color: $mystic-red !important;
 }
 
 // nav-tabs colors
